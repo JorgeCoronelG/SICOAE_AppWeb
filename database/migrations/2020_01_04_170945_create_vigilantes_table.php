@@ -18,9 +18,11 @@ class CreateVigilantesTable extends Migration
             $table->string('nombre', 150);
             $table->string('telefono', 10);
             $table->string('correo', 120);
+        });
+
+        Schema::table('vigilantes', function($table){
             $table->foreign('correo')->references('correo')->on('usuarios')->
-                onDelete('cascade')->
-                onUpdate('cascade');
+                onDelete('cascade')->onUpdate('cascade');
         });
     }
 

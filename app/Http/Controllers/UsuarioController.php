@@ -39,17 +39,6 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -79,26 +68,14 @@ class UsuarioController extends Controller
         return 'ACTUALIZADO';
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function login(/*Request $request*/)
     {
-        //
+        $usuario = Usuario::where([
+            'correo' => 'ejemplo@gmail.com', 
+            'clave' => md5('password')
+            ])->firstOrFail();
+        echo $usuario->correo;
+        echo $usuario->tipo_usuario;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

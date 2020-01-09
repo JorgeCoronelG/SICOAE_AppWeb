@@ -19,9 +19,11 @@ class CreateRegistrosTable extends Migration
             $table->time('hora_entrada');
             $table->time('hora_salida');
             $table->string('matricula', 15);
+        });
+
+        Schema::table('registros', function($table){
             $table->foreign('matricula')->references('matricula')->on('estudiantes')->
-                onDelete('cascade')->
-                onUpdate('cascade');
+                onDelete('cascade')->onUpdate('cascade');
         });
     }
 

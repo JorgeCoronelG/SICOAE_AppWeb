@@ -16,13 +16,14 @@ class CreateEstudianteTutorTable extends Migration
         Schema::create('estudiante_tutor', function (Blueprint $table) {
             $table->increments('id');
             $table->string('matricula', 15);
-            $table->string('tutor', 100);
+            $table->integer('tutor')->unsigned();
+        });
+
+        Schema::table('estudiante_tutor', function($table){
             $table->foreign('matricula')->references('matricula')->on('estudiantes')->
-                onDelete('cascade')->
-                onUpdate('cascade');
+                onDelete('cascade')->onUpdate('cascade');
             $table->foreign('tutor')->references('id')->on('tutores')->
-                onDelete('cascade')->
-                onUpdate('cascade');
+                onDelete('cascade')->onUpdate('cascade');
         });
     }
 

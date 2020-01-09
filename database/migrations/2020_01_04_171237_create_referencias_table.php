@@ -20,9 +20,11 @@ class CreateReferenciasTable extends Migration
             $table->string('persona', 150);
             $table->integer('estatus');
             $table->string('matricula', 15);
+        });
+
+        Schema::table('referencias', function($table){
             $table->foreign('matricula')->references('matricula')->on('estudiantes')->
-                onDelete('cascade')->
-                onUpdate('cascade');
+                onDelete('cascade')->onUpdate('cascade');
         });
     }
 

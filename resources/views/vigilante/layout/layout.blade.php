@@ -29,7 +29,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.index') }}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('vigilante.index') }}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-lock"></i>
         </div>
@@ -44,104 +44,37 @@
         Usuarios
       </div>
 
-      <!-- Menu Tutor -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTutor" aria-expanded="true" aria-controls="collapseTutor">
-          <i class="fas fa-fw fa-male"></i>
-          <span>Tutor</span>
-        </a>
-        <div id="collapseTutor" class="collapse" aria-labelledby="headingTutor" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="{{ route('admin.agregar.tutor') }}">Agregar</a>
-            <a class="collapse-item" href="{{ route('admin.gestionar.tutores') }}">Gestionar</a>
-          </div>
-        </div>
-      </li>
-
       <!-- Menu Estudiante -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEstudiante" aria-expanded="true" aria-controls="collapseEstudiante">
           <i class="fas fa-fw fa-graduation-cap"></i>
-          <span>Estudiante</span>
+          <span>Estudiantes</span>
         </a>
         <div id="collapseEstudiante" class="collapse" aria-labelledby="headingEstudiante" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="{{ route('admin.agregar.estudiante') }}">Agregar</a>
-            <a class="collapse-item" href="{{ route('admin.gestionar.estudiantes') }}">Gestionar</a>
+            <h6 class="collapse-header">Módulo</h6>
+            <a class="collapse-item" href="{{ route('vigilante.entrada.estudiante') }}">Entrada</a>
+            <a class="collapse-item" href="{{ route('vigilante.salida.estudiante') }}">Salida</a>
           </div>
         </div>
       </li>
       
-      <!-- Menu Vigilante -->
+      <!-- Menu Externos -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVigilante" aria-expanded="true" aria-controls="collapseVigilante">
-          <i class="fas fa-fw fa-id-badge"></i>
-          <span>Vigilante</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExterno" aria-expanded="true" aria-controls="collapseExterno">
+          <i class="fas fa-fw fa-male"></i>
+          <span>Externo</span>
         </a>
-        <div id="collapseVigilante" class="collapse" aria-labelledby="headingVigilante" data-parent="#accordionSidebar">
+        <div id="collapseExterno" class="collapse" aria-labelledby="headingExterno" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="{{ route('admin.agregar.vigilante') }}">Agregar</a>
-            <a class="collapse-item" href="{{ route('admin.gestionar.vigilantes') }}">Gestionar</a>
+            <h6 class="collapse-header">Módulo</h6>
+            <a class="collapse-item" href="{{ route('vigilante.entrada.externo') }}">Entrada</a>
+            <a class="collapse-item" href="{{ route('vigilante.salida.externo') }}">Salida</a>
           </div>
         </div>
       </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Escolar
-      </div>
-
-      <!-- Menu Grado -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGrado" aria-expanded="true" aria-controls="collapseGrado">
-          <i class="fas fa-fw fa-list-ol"></i>
-          <span>Grado</span>
-        </a>
-        <div id="collapseGrado" class="collapse" aria-labelledby="headingGrado" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="{{ route('admin.agregar.grado') }}">Agregar</a>
-            <a class="collapse-item" href="{{ route('admin.gestionar.grados') }}">Gestionar</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Menu Grupo -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGrupo" aria-expanded="true" aria-controls="collapseGrupo">
-          <i class="fas fa-fw fa-users"></i>
-          <span>Grupo</span>
-        </a>
-        <div id="collapseGrupo" class="collapse" aria-labelledby="headingGrupo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="{{ route('admin.agregar.grupo') }}">Agregar</a>
-            <a class="collapse-item" href="{{ route('admin.gestionar.grupos') }}">Gestionar</a>
-          </div>
-        </div>
-      </li>
-
-    <!-- Menu Estadísticas -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEstadisticas" aria-expanded="true" aria-controls="collapseEstadisticas">
-          <i class="fas fa-fw fa-signal"></i>
-          <span>Estadísticas</span>
-        </a>
-        <div id="collapseEstadisticas" class="collapse" aria-labelledby="headingGrupo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="">Por estudiante</a>
-            <a class="collapse-item" href="">Por grupo</a>
-            <a class="collapse-item" href="">Por grado</a>
-          </div>
-        </div>
-      </li>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -206,8 +139,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
-                <i class="fa fa-user"></i>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Vigilante</span>
+                <i class="fa fa-id-badge"></i>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -231,18 +164,18 @@
         </div>
         <!-- /.container-fluid -->
 
-      </div>
-      <!-- End of Main Content -->
+</div>
+<!-- End of Main Content -->
 
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-      <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-          <span>Copyright &copy; SICOAE 2019</span>
-        </div>
-      </div>
-    </footer>
-    <!-- End of Footer -->
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+  <div class="container my-auto">
+    <div class="copyright text-center my-auto">
+      <span>Copyright &copy; SICOAE 2019</span>
+    </div>
+  </div>
+</footer>
+<!-- End of Footer -->
 
 </div>
 <!-- End of Content Wrapper -->

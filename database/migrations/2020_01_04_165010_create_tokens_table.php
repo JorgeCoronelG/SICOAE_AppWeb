@@ -15,11 +15,13 @@ class CreateTokensTable extends Migration
     {
         Schema::create('tokens', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tutor', 100);
-            $table->string('token', 100);
+            $table->integer('tutor')->unsigned();
+            $table->string('token');
+        });
+
+        Schema::table('tokens', function($table){
             $table->foreign('tutor')->references('id')->on('tutores')->
-                onDelete('cascade')->
-                onUpdate('cascade');
+                onDelete('cascade')->onUpdate('cascade');
         });
     }
 
