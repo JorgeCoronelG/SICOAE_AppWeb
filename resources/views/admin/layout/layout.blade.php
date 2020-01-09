@@ -8,8 +8,7 @@
     <title>@yield('title')</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -290,6 +289,7 @@
 
  <!--Custom scripts for all pages-->
 <script src="{{ asset('dist/js/sb-admin-2.min.js') }}"></script>
+<script src="{{ asset('dist/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 <!-- Page level plugins -->
 <script src="{{ asset('dist/vendor/chart.js/Chart.min.js') }}"></script>
