@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Usuario;
+use App\Http\Requests\LoginRequest;
 
 class UsuarioController extends Controller
 {
@@ -68,14 +70,22 @@ class UsuarioController extends Controller
         return 'ACTUALIZADO';
     }
 
-    public function login(/*Request $request*/)
+    public function login(LoginRequest $request)
     {
-        $usuario = Usuario::where([
-            'correo' => 'ejemplo@gmail.com', 
-            'clave' => md5('password')
-            ])->firstOrFail();
-        echo $usuario->correo;
-        echo $usuario->tipo_usuario;
+        /*$usuario = Usuario::where([
+            'correo' => $request->correo, 
+            'clave' => md5($request->clave)
+        ])->first();*/
+        if(Auth::attempt(['correo' => $request->correo, 'password' => $request->clave], false)){
+            return response()->json('Has iniciado sesión', 200);
+        }else{
+            return response()->json(['errors' => ['login' => ['Correo y/o contraseña incorrectos']]], 422);
+        }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('index');
     }
 
 }

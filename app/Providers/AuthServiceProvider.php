@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Extensions\MyEloquentUserProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {

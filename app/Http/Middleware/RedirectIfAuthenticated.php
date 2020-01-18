@@ -18,8 +18,15 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+        if(Auth::check()){
+            $tipoUsuario = Auth::user()->tipo_usuario;
+            if($tipoUsuario == 1){
+                //Administrador
+                return redirect('/admin');
+            }else if($tipoUsuario == 2){
+                //Vigilante
+                return redirect('/vigilante');
+            }
         }
 
         return $next($request);

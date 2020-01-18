@@ -13,6 +13,8 @@
     <link href="{{ asset('dist/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="{{ asset('dist/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <!-- Toastr-->
+    <link href="{{ asset('dist/css/toastr.min.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gradient-default">
 
@@ -34,16 +36,20 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Iniciar sesión</h1>
                                 </div>
-                                <form class="user">
+                                <form id="form-login" class="user" novalidate="">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="email" name="email" 
-                                            placeholder="Correo electrónico" maxlength="120" required>
+                                        <input type="email" class="form-control form-control-user" id="correo" name="correo" 
+                                            placeholder="Correo electrónico" maxlength="120" autocomplete="off">
+                                        <span id="error-correo" style="color: #D52E2E;"></span>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password" name="password" 
-                                            placeholder="Contraseña" required>
+                                        <input type="password" class="form-control form-control-user" id="clave" name="clave" 
+                                            placeholder="Contraseña">
+                                        <span id="error-clave" style="color: #D52E2E;"></span>
                                     </div>
-                                    <button class="btn btn-primary btn-user btn-block">Accesar</button>
+                                    <button id="btn-login" class="btn btn-primary btn-user btn-block">Accesar</button>
+                                    <div id="load-login" class="btn btn-primary btn-user btn-block disabled d-none">Verificando información...</div>
                                 </form>
                                 </div>
                             </div>
@@ -64,6 +70,8 @@
     <script src="{{ asset('dist/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('dist/js/sb-admin-2.min.js') }}"></script>
+    <!-- Toastr-->
+    <script src="{{ asset('dist/js/toastr.min.js') }}"></script>
     <script src="{{ asset('dist/js/usuario/login.js') }}"></script>
 </body>
 </html>

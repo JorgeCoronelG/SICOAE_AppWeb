@@ -13,34 +13,33 @@
 
 Route::get('/', function () {
     return view('login');
-})->name('index');
+})->middleware('guest')->name('index');
 
 Route::resource('usuario', 'UsuarioController');
+Route::post('/login', 'UsuarioController@login')->name('login');
+Route::get('/logout', 'UsuarioController@logout')->name('logout');
 
-Route::get('admin', 'AdminViewController@index')->name('admin.index');
+Route::middleware(['auth', 'administrador'])->group(function(){
+    Route::get('/admin', 'AdminViewController@index')->name('admin.index');
+    Route::get('/admin/agregarTutor','AdminViewController@agregarTutor')->name('admin.agregar.tutor');
+    Route::get('/admin/gestionarTutores', 'AdminViewController@gestionarTutores')->name('admin.gestionar.tutores');
+    Route::get('/admin/agregarEstudiante', 'AdminViewController@agregarEstudiante')->name('admin.agregar.estudiante');
+    Route::get('/admin/gestionarEstudiantes', 'AdminViewController@gestionarEstudiantes')->name('admin.gestionar.estudiantes');
+    Route::get('/admin/agregarVigilante', 'AdminViewController@agregarVigilante')->name('admin.agregar.vigilante');
+    Route::get('/admin/gestionarVigilantes', 'AdminViewController@gestionarVigilantes')->name('admin.gestionar.vigilantes');
+    Route::get('/admin/agregarGrado', 'AdminViewController@agregarGrado')->name('admin.agregar.grado');
+    Route::get('/admin/gestionarGrados', 'AdminViewController@gestionarGrados')->name('admin.gestionar.grados');
+    Route::get('/admin/agregarGrupo', 'AdminViewController@agregarGrupo')->name('admin.agregar.grupo');
+    Route::get('/admin/gestionarGrupos', 'AdminViewController@gestionarGrupos')->name('admin.gestionar.grupos');
+});
 
-Route::get('admin/agregarTutor','AdminViewController@agregarTutor')->name('admin.agregar.tutor');
-Route::get('admin/gestionarTutores', 'AdminViewController@gestionarTutores')->name('admin.gestionar.tutores');
-
-Route::get('admin/agregarEstudiante', 'AdminViewController@agregarEstudiante')->name('admin.agregar.estudiante');
-Route::get('admin/gestionarEstudiantes', 'AdminViewController@gestionarEstudiantes')->name('admin.gestionar.estudiantes');
-
-Route::get('admin/agregarVigilante', 'AdminViewController@agregarVigilante')->name('admin.agregar.vigilante');
-Route::get('admin/gestionarVigilantes', 'AdminViewController@gestionarVigilantes')->name('admin.gestionar.vigilantes');
-
-Route::get('admin/agregarGrado', 'AdminViewController@agregarGrado')->name('admin.agregar.grado');
-Route::get('admin/gestionarGrados', 'AdminViewController@gestionarGrados')->name('admin.gestionar.grados');
-
-Route::get('admin/agregarGrupo', 'AdminViewController@agregarGrupo')->name('admin.agregar.grupo');
-Route::get('admin/gestionarGrupos', 'AdminViewController@gestionarGrupos')->name('admin.gestionar.grupos');
-
-Route::get('vigilante', 'VigilanteViewController@index')->name('vigilante.index');
-
-Route::get('vigilante/entradaEstudiante', 'VigilanteViewController@entradaEstudiante')->name('vigilante.entrada.estudiante');
-Route::get('vigilante/salidaEstudiante', 'VigilanteViewController@salidaEstudiante')->name('vigilante.salida.estudiante');
-
-Route::get('vigilante/entradaExterno', 'VigilanteViewController@entradaExterno')->name('vigilante.entrada.externo');
-Route::get('vigilante/salidaExterno', 'VigilanteViewController@salidaExterno')->name('vigilante.salida.externo');
+Route::middleware(['auth', 'vigilante'])->group(function(){
+    Route::get('/vigilante', 'VigilanteViewController@index')->name('vigilante.index');
+    Route::get('/vigilante/entradaEstudiante', 'VigilanteViewController@entradaEstudiante')->name('vigilante.entrada.estudiante');
+    Route::get('/vigilante/salidaEstudiante', 'VigilanteViewController@salidaEstudiante')->name('vigilante.salida.estudiante');
+    Route::get('/vigilante/entradaExterno', 'VigilanteViewController@entradaExterno')->name('vigilante.entrada.externo');
+    Route::get('/vigilante/salidaExterno', 'VigilanteViewController@salidaExterno')->name('vigilante.salida.externo');
+});
 
 //Rutas de ejemplo
 /*

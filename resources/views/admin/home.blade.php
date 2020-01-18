@@ -87,5 +87,5 @@
 @endsection
 
 @section('script')
-    <!--<script src="{{ asset('prueba.js') }}"></script>-->
+    <script src="{{ asset('dist/js/home-admin.js') }}"></script>
 @endsection
