@@ -19,6 +19,8 @@ Route::resource('usuario', 'UsuarioController');
 Route::post('/login', 'UsuarioController@login')->name('login');
 Route::get('/logout', 'UsuarioController@logout')->name('logout');
 
+Route::resource('tutor', 'TutorController');
+
 Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin', 'AdminViewController@index')->name('admin.index');
     Route::get('/admin/agregarTutor','AdminViewController@agregarTutor')->name('admin.agregar.tutor');

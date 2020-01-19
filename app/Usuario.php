@@ -13,14 +13,13 @@ class Usuario extends Authenticatable
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
+    protected $table = 'usuarios';
 
     use Notifiable;
 
-    protected $fillable = [
-        'correo', 'clave', 'tipo_usuario', 'estatus'
-    ];
+    protected $fillable = ['correo', 'clave', 'tipo_usuario', 'estatus'];
 
-    protected $hidden = [
-        'clave', 'remember_token',
-    ];
+    public function tutor(){
+        return $this->hasOne('App\Tutor', 'correo');
+    }
 }

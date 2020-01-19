@@ -16,7 +16,6 @@ class UserTableSeeder extends Seeder
             'correo' => 'administrador@gmail.com',
             'clave' => bcrypt('password'),
             'tipo_usuario' => 1,
-            'remember_token' => '',
             'estatus' => 1
         ]);
     }

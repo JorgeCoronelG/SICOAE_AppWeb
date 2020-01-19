@@ -18,7 +18,6 @@ class CreateUsuariosTable extends Migration
             $table->primary('correo');
             $table->string('clave');
             $table->integer('tipo_usuario');
-            $table->string('remember_token');
             $table->integer('estatus');
         });
     }
