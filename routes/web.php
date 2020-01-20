@@ -15,11 +15,14 @@ Route::get('/', function () {
     return view('login');
 })->middleware('guest')->name('index');
 
-Route::resource('usuario', 'UsuarioController');
 Route::post('/login', 'UsuarioController@login')->name('login');
 Route::get('/logout', 'UsuarioController@logout')->name('logout');
+Route::resource('usuario', 'UsuarioController');
 
-Route::resource('tutor', 'TutorController');
+Route::get('/tutor/all', 'TutorController@findAll')->name('tutor.all');
+Route::post('/tutor/add', 'TutorController@add')->name('tutor.add');
+Route::post('/tutor/edit', 'TutorController@edit')->name('tutor.edit');
+Route::post('/tutor/status', 'TutorController@changeStatus')->name('tutor.status');
 
 Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin', 'AdminViewController@index')->name('admin.index');

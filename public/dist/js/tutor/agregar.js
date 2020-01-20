@@ -2,7 +2,7 @@ $('#form-tutor').submit(function(e){
     e.preventDefault();
 
     $.ajax({
-        url: '/tutor',
+        url: '/tutor/add',
         method: 'post',
         data: $(this).serialize(),
         dataType: 'json',

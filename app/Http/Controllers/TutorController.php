@@ -9,13 +9,8 @@ use App\Http\Requests\TutorRequest;
 
 class TutorController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(TutorRequest $request)
+
+    public function add(TutorRequest $request)
     {
         $usuario = Usuario::create([
             'correo' => $request->correo,
@@ -38,48 +33,45 @@ class TutorController extends Controller
         ], 422);*/
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function edit(Request $request){
+        $usuario = Usuario::find($request->correo);
+        if($usuario == null){
+            $usuario = Usuario::find($request->oldemail);
+            if($usuario != null){
+                $usuario->correo = $request->correo;
+                $usuario->save();
+    
+                $tutor = Tutor::find($request->idupdate);
+                if($tutor != null){
+                    $tutor->nombre = $request->nombre;
+                    $tutor->telefono = $request->telefono;
+                    $tutor->save();
+    
+                    return response()->json('OK', 200);
+                }else{
+                    return response()->json(['errors' => ['update' => ['Vuelva a intentarlo más tarde']]], 422);
+                }
+            }else{
+                return response()->json(['errors' => ['update' => ['Vuelva a intentarlo más tarde']]], 422);
+            }
+        }else{
+            return response()->json(['errors' => ['update' => ['Correo ya registrado']]], 422);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function changeStatus(Request $request){
+        $usuario = Usuario::find($request->id);
+        ($usuario->estatus == 1) ? $usuario->estatus = 0 : $usuario->estatus = 1;
+        if($usuario->save()){
+            return response()->json('OK', 200);
+        }else{
+            return response()->json(['errors' => ['estatus' => ['Vuelva a intentarlo más tarde']]], 422);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function findAll(){
+        $tutores = Tutor::join('usuarios', 'usuarios.correo', '=', 'tutores.correo')->get();
+        return response()->json($tutores, 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

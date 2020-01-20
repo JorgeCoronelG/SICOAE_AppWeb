@@ -11,7 +11,7 @@ class Tutor extends Model
 
     protected $fillable = ['nombre', 'telefono', 'correo'];
 
-    public function user(){
-        return $this->belongsTo('App\Usuario');
+    public function usuario(){
+        return $this->belongsTo('App\Usuario', 'correo');
     }
 }
