@@ -18,17 +18,20 @@ class CreateEstudiantesTable extends Migration
             $table->primary('matricula');
             $table->string('tarjeta', 20);
             $table->string('nombre', 150);
-            $table->date('fecha_nacimiento', 20);
-            $table->string('curp',18);
-            $table->integer('estatus');
-            $table->integer('grado')->unsigned()->nullable();
+            //$table->date('fecha_nacimiento', 20);
+            //$table->string('curp',18);
+            $table->integer('grado')->nullable();
             $table->string('grupo', 50)->nullable();
+            $table->integer('tutor')->nullable()->unsigned();
+            $table->integer('estatus');
         });
 
         Schema::table('estudiantes', function($table){
             $table->foreign('grado')->references('grado')->on('grados')->
                 onDelete('set null')->onUpdate('cascade');
             $table->foreign('grupo')->references('grupo')->on('grupos')->
+                onDelete('set null')->onUpdate('cascade');
+            $table->foreign('tutor')->references('id')->on('tutores')->
                 onDelete('set null')->onUpdate('cascade');
         });
     }

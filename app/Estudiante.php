@@ -10,4 +10,7 @@ class Estudiante extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
+    protected $table = 'estudiantes';
+
+    protected $fillable = ['matricula', 'tarjeta', 'nombre', 'grado', 'grupo', 'tutor', 'estatus'];
 }

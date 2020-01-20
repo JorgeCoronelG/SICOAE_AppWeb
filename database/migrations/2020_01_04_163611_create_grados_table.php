@@ -14,7 +14,8 @@ class CreateGradosTable extends Migration
     public function up()
     {
         Schema::create('grados', function (Blueprint $table) {
-            $table->increments('grado');
+            $table->integer('grado');
+            $table->primary('grado');
         });
     }
 

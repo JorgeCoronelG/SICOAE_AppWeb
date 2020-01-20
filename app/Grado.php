@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Grado extends Model
 {
     public $timestamps = false;
+
+    protected $fillable = ['grado'];
 }

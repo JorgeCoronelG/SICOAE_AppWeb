@@ -17,7 +17,7 @@ $('#form-tutor').submit(function(e){
         },
         error: function(jqXHR){
             let errors = jqXHR.responseJSON.errors;
-            if(errors.hasOwnProperty('tutor')) toastr.error(errors['tutor'][0], 'Error');
+            if(errors.hasOwnProperty('correo')) toastr.error(errors['correo'][0], 'Error');
         },
         complete: function(){
             $('#btn-add').removeClass('d-none');

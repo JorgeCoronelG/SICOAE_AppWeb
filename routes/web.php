@@ -15,14 +15,21 @@ Route::get('/', function () {
     return view('login');
 })->middleware('guest')->name('index');
 
+Route::get('/usuario/index', 'UsuarioController@index')->name('usuario.index');
 Route::post('/login', 'UsuarioController@login')->name('login');
 Route::get('/logout', 'UsuarioController@logout')->name('logout');
-Route::resource('usuario', 'UsuarioController');
 
 Route::get('/tutor/all', 'TutorController@findAll')->name('tutor.all');
+Route::get('/tutor/all/actives', 'TutorController@findAllActives')->name('tutor.all.actives');
 Route::post('/tutor/add', 'TutorController@add')->name('tutor.add');
 Route::post('/tutor/edit', 'TutorController@edit')->name('tutor.edit');
 Route::post('/tutor/status', 'TutorController@changeStatus')->name('tutor.status');
+
+Route::get('/grado/all', 'GradoController@findAll')->name('grado.all');
+
+Route::get('/grupo/all', 'GrupoController@findAll')->name('grupo.all');
+
+Route::post('/estudiante/add', 'EstudianteController@add')->name('estudiante.add');
 
 Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin', 'AdminViewController@index')->name('admin.index');

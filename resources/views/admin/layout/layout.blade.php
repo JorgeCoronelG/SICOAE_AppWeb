@@ -100,7 +100,7 @@
       </div>
 
       <!-- Menu Grado -->
-      <li class="nav-item">
+      <!--<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGrado" aria-expanded="true" aria-controls="collapseGrado">
           <i class="fas fa-fw fa-list-ol"></i>
           <span>Grado</span>
@@ -112,10 +112,10 @@
             <a class="collapse-item" href="{{ route('admin.gestionar.grados') }}">Gestionar</a>
           </div>
         </div>
-      </li>
+      </li>-->
 
       <!-- Menu Grupo -->
-      <li class="nav-item">
+      <!--<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGrupo" aria-expanded="true" aria-controls="collapseGrupo">
           <i class="fas fa-fw fa-users"></i>
           <span>Grupo</span>
@@ -127,7 +127,7 @@
             <a class="collapse-item" href="{{ route('admin.gestionar.grupos') }}">Gestionar</a>
           </div>
         </div>
-      </li>
+      </li>-->
 
     <!-- Menu Estadísticas -->
       <li class="nav-item">
