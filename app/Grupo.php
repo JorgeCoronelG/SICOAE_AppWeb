@@ -11,5 +11,10 @@ class Grupo extends Model
     protected $keyType = 'string';
     public $timestamps = false;
 
-    protected $fillable = ['grado'];
+    protected $fillable = ['grupo'];
+
+    public function getEstudiante(){
+        return $this->hasMany('App\Estudiante', 'grupo', 'grupo');
+    }
+
 }

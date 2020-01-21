@@ -14,4 +14,8 @@ class Tutor extends Model
     public function usuario(){
         return $this->belongsTo('App\Usuario', 'correo');
     }
+
+    public function getEstudiante(){
+        return $this->hasMany('App\Estudiante', 'tutor', 'id');
+    }
 }

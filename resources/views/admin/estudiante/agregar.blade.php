@@ -20,7 +20,7 @@
                                 <div class="form-group row">
                                     <div class="col-12">
                                         <input type="text" class="form-control" id="nombre" name="nombre"
-                                        placeholder="Nombre completo" maxlength="120" autocomplete="off" required />
+                                            placeholder="Nombre completo" maxlength="150" autocomplete="off" required />
                                     </div>
                                     <!--<div class="col-4">
                                         <input id="fechaN" name="fechaN" class="form-control" type="text" 

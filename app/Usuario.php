@@ -20,7 +20,7 @@ class Usuario extends Authenticatable
     protected $fillable = ['correo', 'clave', 'tipo_usuario', 'estatus'];
     protected $hidden = ['clave'];
 
-    public function tutor(){
+    public function getTutor(){
         return $this->hasOne('App\Tutor', 'correo', 'correo');
     }
 }

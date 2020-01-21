@@ -33,4 +33,45 @@ class EstudianteController extends Controller
         }
     }
 
+    public function edit(EstudianteRequest $request){
+        $tutor = Tutor::find($request->tutor);
+        if($tutor != null){
+            $estudiante_old = Estudiante::find($request->oldmatricula);
+            if($estudiante_old != null){
+                $estudiante_new = Estudiante::find($request->matricula);
+                if($estudiante_new == null){
+                    $estudiante_old->matricula = $request->matricula;
+                    $estudiante_old->tarjeta = $request->tarjeta;
+                    $estudiante_old->nombre = $request->nombre;
+                    $estudiante_old->grado = $request->grado;
+                    $estudiante_old->grupo = $request->grupo;
+                    $estudiante_old->tutor = $tutor->id;
+                    $estudiante_old->save();
+                    return response()->json('OK', 200);
+                }else if($estudiante_old->matricula == $estudiante_new->matricula){
+                    $estudiante_old->tarjeta = $request->tarjeta;
+                    $estudiante_old->nombre = $request->nombre;
+                    $estudiante_old->grado = $request->grado;
+                    $estudiante_old->grupo = $request->grupo;
+                    $estudiante_old->tutor = $tutor->id;
+                    $estudiante_old->save();
+                    return response()->json('OK', 200);
+                }else{
+                    return response()->json(['errors' => ['update' => ['Matrícula ya existente']]], 422);
+                }
+            }else{
+                return response()->json(['errors' => ['update' => ['Estudiante no encontrado']]], 422);
+            }
+        }else{
+            return response()->json(['errors' => ['update' => ['No hay registros del tutor']]], 422);
+        }
+    }
+
+    public function findAll(){
+        $estudiantes = Estudiante::join('tutores', 'estudiantes.tutor', '=', 'tutores.id')
+        ->select('estudiantes.*', 'tutores.nombre as nombre_tutor')
+        ->get();
+        return response()->json($estudiantes);
+    }
+
 }

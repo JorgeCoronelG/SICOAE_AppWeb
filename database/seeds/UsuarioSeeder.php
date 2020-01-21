@@ -24,7 +24,7 @@ class UsuarioSeeder extends Seeder
             'tipo_usuario' => 3,
             'estatus' => 1
         ]);
-        $usuario->tutor()->create([
+        $usuario->getTutor()->create([
             'nombre' => 'Tutor 1',
             'telefono' => '4421223344'
         ]);
@@ -34,7 +34,7 @@ class UsuarioSeeder extends Seeder
             'tipo_usuario' => 3,
             'estatus' => 1
         ]);
-        $usuario->tutor()->create([
+        $usuario->getTutor()->create([
             'nombre' => 'Tutor 2',
             'telefono' => '4421223344'
         ]);
@@ -44,7 +44,7 @@ class UsuarioSeeder extends Seeder
             'tipo_usuario' => 3,
             'estatus' => 1
         ]);
-        $usuario->tutor()->create([
+        $usuario->getTutor()->create([
             'nombre' => 'Tutor 3',
             'telefono' => '4421223344'
         ]);
