@@ -67,6 +67,17 @@ class EstudianteController extends Controller
         }
     }
 
+    public function changeStatus(Request $request){
+        $estudiante = Estudiante::find($request->id);
+        if($estudiante != null){
+            ($estudiante->estatus == 1) ? $estudiante->estatus = 0 : $estudiante->estatus = 1;
+            $estudiante->save();
+            return response()->json('OK', 200);
+        }else{
+            return response()->json(['errors' => ['estatus' => ['Estudiante no encontrado']]], 422);
+        }
+    }
+
     public function findAll(){
         $estudiantes = Estudiante::join('tutores', 'estudiantes.tutor', '=', 'tutores.id')
         ->select('estudiantes.*', 'tutores.nombre as nombre_tutor')

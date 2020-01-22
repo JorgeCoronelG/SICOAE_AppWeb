@@ -32,6 +32,7 @@ Route::get('/grupo/all', 'GrupoController@findAll')->name('grupo.all');
 Route::post('/estudiante/add', 'EstudianteController@add')->name('estudiante.add');
 Route::get('/estudiante/all', 'EstudianteController@findAll')->name('estudiante.all');
 Route::post('/estudiante/edit', 'EstudianteController@edit')->name('estudiante.edit');
+Route::post('/estudiante/status', 'EstudianteController@changeStatus')->name('estudiante.status');
 
 Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin', 'AdminViewController@index')->name('admin.index');

@@ -41,8 +41,12 @@ $('#tabla-estudiante').DataTable({
         {data: 'nombre_tutor'},
         {'orderable': true,
             render: function(data, type, row){
-                var output = '<button class="btn btn-outline-primary btn-circle" data-toggle="modal" data-target="#update-modal" onclick="actualizar(\''+row.matricula+'\',\''+row.tarjeta+'\',\''+row.nombre+'\',\''+row.grado+'\',\''+row.grupo+'\', \''+row.tutor+'\');"><i class="fas fa-edit"></i></button> '+
-                '<button class="btn btn-outline-danger btn-circle" data-toggle="modal" data-target="#change-status-modal" onclick="cambiarEstatus(\''+row.correo+'\');"><i class="fas fa-times"></i></button>';
+                var output = '<button class="btn btn-outline-primary btn-circle" data-toggle="modal" data-target="#update-modal" onclick="actualizar(\''+row.matricula+'\',\''+row.tarjeta+'\',\''+row.nombre+'\',\''+row.grado+'\',\''+row.grupo+'\', \''+row.tutor+'\');"><i class="fas fa-edit"></i></button> ';
+                if(row.estatus == 1){
+                    output += '<button class="btn btn-outline-danger btn-circle" data-toggle="modal" data-target="#change-status-modal" onclick="cambiarEstatus(\''+row.matricula+'\',\''+row.nombre+'\', \'INACTIVO\');"><i class="fas fa-times"></i></button>';
+                }else{
+                    output += '<button class="btn btn-outline-success btn-circle" data-toggle="modal" data-target="#change-status-modal" onclick="cambiarEstatus(\''+row.matricula+'\',\''+row.nombre+'\', \'ACTIVO\');"><i class="fas fa-check"></i></button>';
+                }
                 return output;
             }
         }
@@ -63,6 +67,12 @@ function actualizar(matricula, tarjeta, nombre, grado, grupo, tutor){
     getGrado(grado);
     getGrupo(grupo);
     getTutor(tutor);
+}
+
+function cambiarEstatus(id, nombre, estatus){
+    $('#idchange').val(id);
+    $('#estudiante').html(nombre);
+    $('#status').html(estatus);
 }
 
 $('#form-update').submit(function(e){
@@ -91,6 +101,40 @@ $('#form-update').submit(function(e){
             $('#btn-cancel').removeClass('d-none');
             $('#btn-update').removeClass('d-none');
             $('#load-update').addClass('d-none');
+        }
+    });
+});
+
+$('#btn-yes').click(function(){
+    var id = $('#idchange').val();
+    var token = $('#token').val();
+    $.ajax({
+        url: '/estudiante/status',
+        method: 'post',
+        data: { _token: token, id : id },
+        dataType: 'json',
+        beforeSend: function(){
+            $('#load-status').removeClass('d-none');
+            $('#btn-not').addClass('d-none');
+            $('#btn-yes').addClass('d-none');
+        },
+        success: function(data){
+            var estudiante = $('#estudiante').text();
+            toastr.options.onHidden = function() { location.reload(); }
+            if($('#status').text() === 'ACTIVO'){
+                toastr.success('Estudiante '+estudiante+' activo', '¡Éxito!', {timeOut: 1500})
+            }else{
+                toastr.success('Estudiante '+estudiante+' inactivo', '¡Éxito!', {timeOut: 1500})
+            }
+        },
+        error: function(jqXHR){
+            let errors = jqXHR.responseJSON.errors;
+            if(errors.hasOwnProperty('estatus')) toastr.error(errors['estatus'][0], 'Error');
+        },
+        complete: function(){
+            $('#btn-not').removeClass('d-none');
+            $('#btn-yes').removeClass('d-none');
+            $('#load-status').addClass('d-none');
         }
     });
 });
