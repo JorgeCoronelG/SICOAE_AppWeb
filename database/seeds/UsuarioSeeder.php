@@ -48,5 +48,38 @@ class UsuarioSeeder extends Seeder
             'nombre' => 'Tutor 3',
             'telefono' => '4421223344'
         ]);
+
+        $usuario = Usuario::create([
+            'correo' => 'vigilante_1@gmail.com',
+            'clave' => bcrypt('password'),
+            'tipo_usuario' => 2,
+            'estatus' => 1
+        ]);
+        $usuario->getVigilante()->create([
+            'nombre' => 'Vigilante 1',
+            'telefono' => '4421223344'
+        ]);
+
+        $usuario = Usuario::create([
+            'correo' => 'vigilante_2@gmail.com',
+            'clave' => bcrypt('password'),
+            'tipo_usuario' => 2,
+            'estatus' => 1
+        ]);
+        $usuario->getVigilante()->create([
+            'nombre' => 'Vigilante 2',
+            'telefono' => '4421223344'
+        ]);
+
+        $usuario = Usuario::create([
+            'correo' => 'vigilante_3@gmail.com',
+            'clave' => bcrypt('password'),
+            'tipo_usuario' => 2,
+            'estatus' => 1
+        ]);
+        $usuario->getVigilante()->create([
+            'nombre' => 'Vigilante 3',
+            'telefono' => '4421223344'
+        ]);
     }
 }

@@ -34,6 +34,11 @@ Route::get('/estudiante/all', 'EstudianteController@findAll')->name('estudiante.
 Route::post('/estudiante/edit', 'EstudianteController@edit')->name('estudiante.edit');
 Route::post('/estudiante/status', 'EstudianteController@changeStatus')->name('estudiante.status');
 
+Route::post('/vigilante/add', 'VigilanteController@add')->name('vigilante.add');
+Route::get('/vigilante/all', 'VigilanteController@findAll')->name('vigilante.all');
+Route::post('/vigilante/edit', 'VigilanteController@edit')->name('vigilante.edit');
+Route::post('/vigilante/delete', 'VigilanteController@delete')->name('vigilante.delete');
+
 Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin', 'AdminViewController@index')->name('admin.index');
     Route::get('/admin/agregarTutor','AdminViewController@agregarTutor')->name('admin.agregar.tutor');

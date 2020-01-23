@@ -20,7 +20,7 @@ class TutorController extends Controller
                 'tipo_usuario' => 3,
                 'estatus' => 1
             ]);
-            $tutor = $usuario->tutor()->create([
+            $tutor = $usuario->getTutor()->create([
                 'nombre' => $request->nombre,
                 'telefono' => $request->telefono
                 //'correo' => $usuario->correo

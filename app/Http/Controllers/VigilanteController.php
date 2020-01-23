@@ -4,82 +4,86 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vigilante;
+use App\Usuario;
+use App\Http\Requests\VigilanteRequest;
 
 class VigilanteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+    public function add(VigilanteRequest $request){
+        $usuario = Usuario::find($request->correo);
+        if($usuario == null){
+            $usuario = Usuario::create([
+                'correo' => $request->correo,
+                'clave' => bcrypt($request->telefono),
+                'tipo_usuario' => 2,
+                'estatus' => 1
+            ]);
+            $vigilante = $usuario->getVigilante()->create([
+                'nombre' => $request->nombre,
+                'telefono' => $request->telefono
+                //'correo' => $usuario->correo
+            ]);
+            return response()->json('OK', 200);
+        }else{
+            return response()->json(['errors' => ['correo' => ['Correo ya registrado']]], 422);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function edit(Request $request){
+        if($request->oldemail != $request->correo){
+            $usuario = Usuario::find($request->correo);
+            if($usuario == null){
+                $usuario = Usuario::find($request->oldemail);
+                if($usuario != null){
+                    $usuario->correo = $request->correo;
+                    $usuario->save();
+        
+                    $vigilante = Vigilante::find($request->idupdate);
+                    if($vigilante != null){
+                        $vigilante->nombre = $request->nombre;
+                        $vigilante->telefono = $request->telefono;
+                        $vigilante->save();
+        
+                        return response()->json('OK', 200);
+                    }else{
+                        return response()->json(['errors' => ['update' => ['Vuelva a intentarlo más tarde']]], 422);
+                    }
+                }else{
+                    return response()->json(['errors' => ['update' => ['Vuelva a intentarlo más tarde']]], 422);
+                }
+            }else{
+                return response()->json(['errors' => ['update' => ['Correo ya registrado']]], 422);
+            }
+        }else{
+            $vigilante = Vigilante::find($request->idupdate);
+            if($vigilante != null){
+                $vigilante->nombre = $request->nombre;
+                $vigilante->telefono = $request->telefono;
+                $vigilante->save();
+
+                return response()->json('OK', 200);
+            }else{
+                return response()->json(['errors' => ['update' => ['Vuelva a intentarlo más tarde']]], 422);
+            }
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function delete(Request $request){
+        $usuario = Usuario::find($request->correo);
+        if($usuario != null){
+            $usuario->delete();
+            return response()->json('OK', 200);
+        }else{
+            return response()->json(['errors' => ['delete' => ['Vigilante no encontrado']]], 422);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function findAll(){
+        $vigilantes = Vigilante::join('usuarios', 'usuarios.correo', '=', 'Vigilantes.correo')
+        ->select('vigilantes.*')
+        ->get();
+        return response()->json($vigilantes, 200);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

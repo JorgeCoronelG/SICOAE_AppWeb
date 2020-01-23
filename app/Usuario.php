@@ -23,4 +23,8 @@ class Usuario extends Authenticatable
     public function getTutor(){
         return $this->hasOne('App\Tutor', 'correo', 'correo');
     }
+
+    public function getVigilante(){
+        return $this->hasOne('App\Vigilante', 'correo', 'correo');
+    }
 }
