@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Usuario;
-use App\Http\Requests\LoginRequest;
 
 class UsuarioController extends Controller
 {
@@ -70,12 +69,16 @@ class UsuarioController extends Controller
         return 'ACTUALIZADO';
     }
 
-    public function login(LoginRequest $request)
+    public function login(Request $request)
     {
         /*$usuario = Usuario::where([
             'correo' => $request->correo, 
             'clave' => md5($request->clave)
         ])->first();*/
+        $data = $request->validate([
+            'correo' => 'required|email|max:120',
+            'clave' => 'required',
+        ]);
         if(Auth::attempt(['correo' => $request->correo, 'password' => $request->clave], false)){
             return response()->json('Has iniciado sesión', 200);
         }else{

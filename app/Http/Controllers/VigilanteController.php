@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vigilante;
 use App\Usuario;
-use App\Http\Requests\VigilanteRequest;
 
 class VigilanteController extends Controller
 {
 
-    public function add(VigilanteRequest $request){
+    public function add(Request $request){
+        $request->validate([
+            'nombre' => 'required|string|max:150',
+            'telefono' => 'required|string|max:10',
+            'correo' => 'email|required|string'
+        ]);
         $usuario = Usuario::find($request->correo);
         if($usuario == null){
             $usuario = Usuario::create([
@@ -26,7 +30,7 @@ class VigilanteController extends Controller
             ]);
             return response()->json('OK', 200);
         }else{
-            return response()->json(['errors' => ['correo' => ['Correo ya registrado']]], 422);
+            return response()->json(['errors' => ['duplicate-correo' => ['Correo ya registrado']]], 422);
         }
     }
 

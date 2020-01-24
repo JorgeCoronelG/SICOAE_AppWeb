@@ -21,6 +21,7 @@
                                     <div class="col-12">
                                         <input type="text" class="form-control" id="nombre" name="nombre"
                                             placeholder="Nombre completo" maxlength="150" autocomplete="off" required />
+                                        <span id="error-nombre" style="color: #D52E2E;"></span>
                                     </div>
                                     <!--<div class="col-4">
                                         <input id="fechaN" name="fechaN" class="form-control" type="text" 
@@ -32,10 +33,12 @@
                                     <div class="col-6">
                                         <input type="text" class="form-control" id="matricula" name="matricula"
                                             placeholder="Matrícula" maxlength="10" autocomplete="off" required />
+                                        <span id="error-matricula" style="color: #D52E2E;"></span>
                                     </div>
                                     <div class="col-6">
                                         <input type="text" class="form-control" id="tarjeta" name="tarjeta"
-                                            placeholder="ID Tarjeta" maxlength="120" autocomplete="off" required />
+                                            placeholder="ID Tarjeta" maxlength="20" autocomplete="off" required />
+                                        <span id="error-tarjeta" style="color: #D52E2E;"></span>
                                     </div>
                                     <!--<div class="col-4">
                                         <input id="curp" name="curp" class="form-control" type="text" 
@@ -46,15 +49,18 @@
                                 <div class="form-group row">
                                     <div class="col-6">
                                         <select id="grado" name="grado" class="form-control" required></select>
+                                        <span id="error-grado" style="color: #D52E2E;"></span>
                                     </div>
                                     <div class="col-6">
                                         <select id="grupo" name="grupo" class="form-control" required></select>
+                                        <span id="error-grupo" style="color: #D52E2E;"></span>
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="form-group row">
                                     <div class="col-12">
                                         <select id="tutor" name="tutor" class="form-control" required></select>
+                                        <span id="error-tutor" style="color: #D52E2E;"></span>
                                     </div>
                                 </div>
                                 <div class="text-center">

@@ -208,7 +208,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->correo }}</span>
                 <i class="fa fa-user"></i>
               </a>
               <!-- Dropdown - User Information -->
@@ -294,7 +294,7 @@
 <script src="{{ asset('dist/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
 <!-- Toastr-->
-    <script src="{{ asset('dist/js/toastr.min.js') }}"></script>
+<script src="{{ asset('dist/js/toastr.min.js') }}"></script>
 
 @yield('script')
 

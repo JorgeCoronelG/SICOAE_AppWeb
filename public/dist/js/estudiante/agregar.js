@@ -41,6 +41,12 @@ $('#form-estudiante').submit(function(e){
         },
         error: function(jqXHR){
             let errors = jqXHR.responseJSON.errors;
+            if(errors.hasOwnProperty('nombre')) $('#error-nombre').html(errors['nombre'][0]); else $('#error-nombre').html();
+            if(errors.hasOwnProperty('matricula')) $('#error-matricula').html(errors['matricula'][0]); else $('#error-matricula').html();
+            if(errors.hasOwnProperty('tarjeta')) $('#error-tarjeta').html(errors['tarjeta'][0]); else $('#error-tarjeta').html();
+            if(errors.hasOwnProperty('grado')) $('#error-grado').html(errors['grado'][0]); else $('#error-grado').html();
+            if(errors.hasOwnProperty('grupo')) $('#error-grupo').html(errors['grupo'][0]); else $('#error-grupo').html();
+            if(errors.hasOwnProperty('tutor')) $('#error-tutor').html(errors['tutor'][0]); else $('#error-tutor').html();
             if(errors.hasOwnProperty('add')) toastr.error(errors['add'][0], 'Error');
         },
         complete: function(){

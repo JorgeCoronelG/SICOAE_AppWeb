@@ -10,8 +10,13 @@ use App\Http\Requests\TutorRequest;
 class TutorController extends Controller
 {
 
-    public function add(TutorRequest $request)
+    public function add(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required|string|max:150',
+            'telefono' => 'required|string|max:10',
+            'correo' => 'email|required|string'
+        ]);
         $usuario = Usuario::find($request->correo);
         if($usuario == null){
             $usuario = Usuario::create([
@@ -27,7 +32,7 @@ class TutorController extends Controller
             ]);
             return response()->json('OK', 200);
         }else{
-            return response()->json(['errors' => ['correo' => ['Correo ya registrado']]], 422);
+            return response()->json(['errors' => ['duplicate-correo' => ['Correo ya registrado']]], 422);
         }
     }
 

@@ -20,19 +20,22 @@
                                 <div class="form-group row">
                                     <div class="col-8">
                                         <input type="text" class="form-control" id="nombre" name="nombre"
-                                            placeholder="Nombre completo" maxlength="150" autocomplete="off" required />
+                                            placeholder="Nombre completo" maxlength="150" autocomplete="off" required/>
+                                        <span id="error-nombre" style="color: #D52E2E;"></span>
                                     </div>
                                     <div class="col-4">
                                         <input id="telefono" name="telefono" class="form-control" type="text" 
-                                            placeholder="Teléfono" autocomplete="off" required onkeypress="return validarTelefono(event);"
-                                            maxlength="10"/>
+                                            placeholder="Teléfono" autocomplete="off" onkeypress="return validarTelefono(event);"
+                                            maxlength="10" required/>
+                                        <span id="error-telefono" style="color: #D52E2E;"></span>
                                     </div>
                                 </div>
                                 <hr /> 
                                 <div class="form-group row">
                                     <div class="col-8 offset-2">
                                         <input type="email" class="form-control" id="correo" name="correo"
-                                            placeholder="Correo electrónico" maxlength="120" autocomplete="off" required />
+                                            placeholder="Correo electrónico" maxlength="120" autocomplete="off" required/>
+                                        <span id="error-correo" style="color: #D52E2E;"></span>
                                     </div>
                                 </div>
                                 <div class="text-center">

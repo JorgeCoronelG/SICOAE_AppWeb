@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Estudiante;
 use App\Tutor;
-use App\Http\Requests\EstudianteRequest;
 
 class EstudianteController extends Controller
 {
     
-    public function add(EstudianteRequest $request){
+    public function add(Request $request){
+        $request->validate([
+            'nombre' => 'required|string|max:150',
+            'matricula' => 'required|max:10',
+            'tarjeta' => 'required|max:20',
+            'grado' => 'required',
+            'grupo' => 'required',
+            'tutor' => 'required',
+        ]);
         $tutor = Tutor::find($request->tutor);
         if($tutor != null){
             $estudiante = Estudiante::find($request->matricula);

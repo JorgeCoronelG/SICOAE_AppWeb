@@ -39,12 +39,12 @@
                                 <form id="form-login" class="user" novalidate="">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="correo" name="correo" 
+                                        <input type="email" class="form-control form-control-user" id="correo" name="correo" required
                                             placeholder="Correo electrónico" maxlength="120" autocomplete="off">
                                         <span id="error-correo" style="color: #D52E2E;"></span>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="clave" name="clave" 
+                                        <input type="password" class="form-control form-control-user" id="clave" name="clave" required
                                             placeholder="Contraseña">
                                         <span id="error-clave" style="color: #D52E2E;"></span>
                                     </div>

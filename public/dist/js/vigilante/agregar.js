@@ -17,7 +17,10 @@ $('#form-vigilante').submit(function(e){
         },
         error: function(jqXHR){
             let errors = jqXHR.responseJSON.errors;
-            if(errors.hasOwnProperty('correo')) toastr.error(errors['correo'][0], 'Error');
+            if(errors.hasOwnProperty('nombre')) $('#error-nombre').html(errors['nombre'][0]); else $('#error-nombre').html('');
+            if(errors.hasOwnProperty('telefono')) $('#error-telefono').html(errors['telefono'][0]); else $('#error-telefono').html('');
+            if(errors.hasOwnProperty('correo')) $('#error-correo').html(errors['correo'][0]); else $('#error-correo').html('');
+            if(errors.hasOwnProperty('duplicate-correo')) toastr.error(errors['duplicate-correo'][0], 'Error');
         },
         complete: function(){
             $('#btn-add').removeClass('d-none');

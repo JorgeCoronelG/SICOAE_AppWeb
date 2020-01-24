@@ -21,10 +21,12 @@
                                     <div class="col-8">
                                         <input type="text" class="form-control" id="nombre" name="nombre" maxlenght="150"
                                             placeholder="Nombre completo" required autocomplete="off" />
+                                        <span id="error-nombre" style="color: #D52E2E;"></span>
                                     </div>
                                     <div class="col-4">
                                         <input id="telefono" name="telefono" class="form-control" type="text" maxlength="10"
                                             placeholder="Teléfono" autocomplete="off" onkeypress="return validarTelefono(event);" required />
+                                        <span id="error-telefono" style="color: #D52E2E;"></span>
                                     </div>
                                 </div>
                                 <hr /> 
@@ -32,6 +34,7 @@
                                     <div class="col-8 offset-2">
                                         <input type="email" class="form-control" id="correo" name="correo" maxlenght="120"
                                             placeholder="Correo electrónico" required autocomplete="off" />
+                                        <span id="error-correo" style="color: #D52E2E;"></span>
                                     </div>
                                 </div>
                                 <div class="text-center">

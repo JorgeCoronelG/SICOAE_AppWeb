@@ -17,6 +17,8 @@
     <link href="{{ asset('dist/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- DataTables-->
     <link href="{{ asset('dist/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <!-- Toastr-->
+    <link href="{{ asset('dist/css/toastr.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -139,7 +141,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Vigilante</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->correo }}</span>
                 <i class="fa fa-id-badge"></i>
               </a>
               <!-- Dropdown - User Information -->
@@ -201,7 +203,7 @@
       <div class="modal-body">Selecciona "Cerrar sesión" si estás listo para terminar tu sesión.</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-        <a class="btn btn-primary" href="{{ route('index') }}">Cerrar sesión</a>
+        <a class="btn btn-primary" href="{{ route('logout') }}">Cerrar sesión</a>
       </div>
     </div>
   </div>
@@ -223,6 +225,9 @@
 <!-- DataTables -->
 <script src="{{ asset('dist/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('dist/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+<!-- Toastr-->
+<script src="{{ asset('dist/js/toastr.min.js') }}"></script>
 
 @yield('script')
 
