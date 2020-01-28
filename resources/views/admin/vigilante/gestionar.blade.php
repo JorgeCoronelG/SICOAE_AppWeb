@@ -5,7 +5,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="table-responsive">
-        <table id="tabla-vigilante" class="table table-bordered" cellspacing="0">
+        <table id="tabla-vigilante" class="table table-bordered" cellspacing="0" width="100%">
             <thead class="thead-dark">
                 <tr>
                     <th style="text-align:center;">Nombre</th>

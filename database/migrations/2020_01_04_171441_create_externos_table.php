@@ -18,10 +18,10 @@ class CreateExternosTable extends Migration
             $table->string('nombre', 120);
             $table->string('telefono');
             $table->date('fecha');
-            $table->text('asunto');
+            $table->text('motivo');
             $table->integer('personas');
             $table->time('hora_entrada');
-            $table->time('hora_salida');
+            $table->time('hora_salida')->nullable();
         });
     }
 

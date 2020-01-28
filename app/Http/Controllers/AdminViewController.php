@@ -50,4 +50,8 @@ class AdminViewController extends Controller
         return view('admin.grupo.gestionar');
     }
 
+    public function historicoExternos(){
+        return view('admin.externos.historico');
+    }
+
 }

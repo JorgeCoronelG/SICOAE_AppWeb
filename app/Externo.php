@@ -8,6 +8,6 @@ class Externo extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['nombre', 'telefono', 'fecha', 'asunto', 'personas', 'hora_entrada', 'hora_salida'];
+    protected $fillable = ['nombre', 'telefono', 'fecha', 'motivo', 'personas', 'hora_entrada', 'hora_salida'];
 
 }

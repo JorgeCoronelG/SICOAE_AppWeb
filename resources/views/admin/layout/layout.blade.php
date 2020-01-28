@@ -99,35 +99,19 @@
         Escolar
       </div>
 
-      <!-- Menu Grado -->
-      <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGrado" aria-expanded="true" aria-controls="collapseGrado">
-          <i class="fas fa-fw fa-list-ol"></i>
-          <span>Grado</span>
-        </a>
-        <div id="collapseGrado" class="collapse" aria-labelledby="headingGrado" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="{{ route('admin.agregar.grado') }}">Agregar</a>
-            <a class="collapse-item" href="{{ route('admin.gestionar.grados') }}">Gestionar</a>
-          </div>
-        </div>
-      </li>-->
-
-      <!-- Menu Grupo -->
-      <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGrupo" aria-expanded="true" aria-controls="collapseGrupo">
+      <!-- Menu Externos -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExterno" aria-expanded="true" aria-controls="collapseExterno">
           <i class="fas fa-fw fa-users"></i>
-          <span>Grupo</span>
+          <span>Externos</span>
         </a>
-        <div id="collapseGrupo" class="collapse" aria-labelledby="headingGrupo" data-parent="#accordionSidebar">
+        <div id="collapseExterno" class="collapse" aria-labelledby="headingExterno" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="{{ route('admin.agregar.grupo') }}">Agregar</a>
-            <a class="collapse-item" href="{{ route('admin.gestionar.grupos') }}">Gestionar</a>
+            <a class="collapse-item" href="{{ route('admin.registros.externos') }}">Registro histórico</a>
           </div>
         </div>
-      </li>-->
+      </li>
 
     <!-- Menu Estadísticas -->
       <li class="nav-item">
