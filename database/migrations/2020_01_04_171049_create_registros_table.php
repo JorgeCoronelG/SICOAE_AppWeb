@@ -17,7 +17,7 @@ class CreateRegistrosTable extends Migration
             $table->increments('id');
             $table->date('fecha');
             $table->time('hora_entrada');
-            $table->time('hora_salida');
+            $table->time('hora_salida')->nullable();
             $table->string('matricula', 15);
         });
 

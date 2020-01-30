@@ -26,4 +26,8 @@ class Estudiante extends Model
         return $this->belongsTo('App\Grupo', 'grupo');
     }
 
+    public function getRegistro(){
+        return $this->hasMany('App\Registro', 'matricula', 'matricula');
+    }
+
 }

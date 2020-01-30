@@ -16,7 +16,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Estudiantes</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">1,000</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="estudiantes"></span></div>
                 </div>
                 <div class="col-auto">
                 <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
@@ -32,7 +32,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Vigilantes</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="vigilantes"></span></div>
                 </div>
                 <div class="col-auto">
                 <i class="fas fa-id-badge fa-2x text-gray-300"></i>
@@ -48,7 +48,7 @@
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Grupos</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">24</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="grupos"></span></div>
                 </div>
                 <div class="col-auto">
                 <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -67,11 +67,11 @@
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Asistencia de hoy</div>
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">93%</div>
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><span id="asistencia"></span></div>
                     </div>
                     <div class="col">
                     <div class="progress progress-sm mr-2">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 93%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div id="porcentaje" class="progress-bar bg-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     </div>
                 </div>

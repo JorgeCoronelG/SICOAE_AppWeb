@@ -28,16 +28,21 @@ Route::post('/tutor/status', 'TutorController@changeStatus')->name('tutor.status
 Route::get('/grado/all', 'GradoController@findAll')->name('grado.all');
 
 Route::get('/grupo/all', 'GrupoController@findAll')->name('grupo.all');
+Route::get('/grupo/count', 'GrupoController@count')->name('grupo.count');
 
 Route::post('/estudiante/add', 'EstudianteController@add')->name('estudiante.add');
 Route::get('/estudiante/all', 'EstudianteController@findAll')->name('estudiante.all');
 Route::post('/estudiante/edit', 'EstudianteController@edit')->name('estudiante.edit');
 Route::post('/estudiante/status', 'EstudianteController@changeStatus')->name('estudiante.status');
+Route::get('/estudiante/count', 'EstudianteController@count')->name('estudiante.count');
 
 Route::post('/vigilante/add', 'VigilanteController@add')->name('vigilante.add');
 Route::get('/vigilante/all', 'VigilanteController@findAll')->name('vigilante.all');
 Route::post('/vigilante/edit', 'VigilanteController@edit')->name('vigilante.edit');
 Route::post('/vigilante/delete', 'VigilanteController@delete')->name('vigilante.delete');
+Route::get('/vigilante/count', 'VigilanteController@count')->name('vigilante.count');
+
+Route::get('/registro/day/assistance', 'RegistroController@dayAssistance')->name('registro.day.assistance');
 
 Route::get('/hora', function(){
     return 'Fecha: '.date('Y/m/d').', Hora:'.date('G:i:s');

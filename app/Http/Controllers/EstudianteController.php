@@ -92,4 +92,9 @@ class EstudianteController extends Controller
         return response()->json($estudiantes);
     }
 
+    public function count(){
+        $estudiantes = Estudiante::where('estatus', 1)->count();
+        return response()->json(['estudiantes' => $estudiantes]);
+    }
+
 }

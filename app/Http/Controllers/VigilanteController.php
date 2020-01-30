@@ -89,5 +89,10 @@ class VigilanteController extends Controller
         ->get();
         return response()->json($vigilantes, 200);
     }
+
+    public function count(){
+        $vigilantes = Vigilante::count();
+        return response()->json(['vigilantes' => $vigilantes]);
+    }
     
 }

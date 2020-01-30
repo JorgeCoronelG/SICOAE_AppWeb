@@ -12,7 +12,7 @@ class EstudianteSeeder extends Seeder
      */
     public function run()
     {
-        Estudiante::create([
+        $estudiante = Estudiante::create([
             'matricula' => '2020113001',
             'tarjeta' => 'ABC001',
             'nombre' => 'Estudiante 1',
@@ -21,7 +21,12 @@ class EstudianteSeeder extends Seeder
             'grupo' => 'A',
             'tutor' => 1
         ]);
-        Estudiante::create([
+        $estudiante->getRegistro()->create([
+            'fecha' => date('Y/m/d'),
+            'hora_entrada' => date('G:i:s'),
+            'hora_salida' => null
+        ]);
+        $estudiante = Estudiante::create([
             'matricula' => '2020113002',
             'tarjeta' => 'ABC002',
             'nombre' => 'Estudiante 2',
@@ -30,7 +35,12 @@ class EstudianteSeeder extends Seeder
             'grupo' => 'B',
             'tutor' => 1
         ]);
-        Estudiante::create([
+        $estudiante->getRegistro()->create([
+            'fecha' => date('Y/m/d'),
+            'hora_entrada' => date('G:i:s'),
+            'hora_salida' => null
+        ]);
+        $estudiante = Estudiante::create([
             'matricula' => '2020113003',
             'tarjeta' => 'ABC003',
             'nombre' => 'Estudiante 3',
@@ -38,6 +48,11 @@ class EstudianteSeeder extends Seeder
             'grado' => 2,
             'grupo' => 'B',
             'tutor' => 2
+        ]);
+        $estudiante->getRegistro()->create([
+            'fecha' => date('Y/m/d'),
+            'hora_entrada' => date('G:i:s'),
+            'hora_salida' => null
         ]);
         Estudiante::create([
             'matricula' => '2020113004',
