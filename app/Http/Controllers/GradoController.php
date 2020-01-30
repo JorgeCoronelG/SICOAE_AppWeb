@@ -12,4 +12,9 @@ class GradoController extends Controller{
         return response()->json($grados);
     }
 
+    public function count(){
+        $grados = Grado::count();
+        return response()->json(['grados' => $grados]);
+    }
+
 }

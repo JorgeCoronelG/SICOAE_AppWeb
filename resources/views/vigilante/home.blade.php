@@ -16,7 +16,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Estudiantes</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">1,000</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="estudiantes"></span></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
@@ -32,7 +32,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Vigilantes</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="vigilantes"></span></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-id-badge fa-2x text-gray-300"></i>
@@ -48,7 +48,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Grados</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">6</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="grados"></span></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-list-ol fa-2x text-gray-300"></i>
@@ -64,7 +64,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Grupos</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">24</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="grupos"></span></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -77,5 +77,5 @@
 @endsection
 
 @section('script')
-    <!--<script src="{{ asset('dist/js/ejemplo.js') }}"></script>-->
+  <script src="{{ asset('dist/js/home-vigilante.js') }}"></script>
 @endsection

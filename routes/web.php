@@ -26,6 +26,7 @@ Route::post('/tutor/edit', 'TutorController@edit')->name('tutor.edit');
 Route::post('/tutor/status', 'TutorController@changeStatus')->name('tutor.status');
 
 Route::get('/grado/all', 'GradoController@findAll')->name('grado.all');
+Route::get('/grado/count', 'GradoController@count')->name('grado.count');
 
 Route::get('/grupo/all', 'GrupoController@findAll')->name('grupo.all');
 Route::get('/grupo/count', 'GrupoController@count')->name('grupo.count');
