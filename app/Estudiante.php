@@ -30,4 +30,8 @@ class Estudiante extends Model
         return $this->hasMany('App\Registro', 'matricula', 'matricula');
     }
 
+    public function getReferencia(){
+        return $this->hasMany('App\Referencia', 'matricula', 'matricula');
+    }
+
 }

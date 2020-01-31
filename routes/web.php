@@ -45,14 +45,17 @@ Route::get('/vigilante/count', 'VigilanteController@count')->name('vigilante.cou
 
 Route::get('/registro/day/assistance', 'RegistroController@dayAssistance')->name('registro.day.assistance');
 
-Route::get('/hora', function(){
-    return 'Fecha: '.date('Y/m/d').', Hora:'.date('G:i:s');
-});
+Route::get('/referencia/all/input', 'ReferenciaController@inputDay')->name('referencia.all.input');
+Route::get('/referencia/input/{id}', 'ReferenciaController@inputReference')->name('referencia.input');
 
 Route::post('/externo/input', 'ExternoController@input')->name('externo.input');
 Route::get('/externo/all', 'ExternoController@findAll')->name('externo.all');
 Route::get('/externo/all/output', 'ExternoController@findAllWithoutOutput')->name('externo.all.output');
 Route::get('/externo/output/{id}', 'ExternoController@output')->name('externo.output');
+
+Route::get('/hora', function(){
+    return 'Fecha: '.date('Y/m/d').', Hora:'.date('G:i:s');
+});
 
 Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin', 'AdminViewController@index')->name('admin.index');

@@ -84,7 +84,7 @@ class VigilanteController extends Controller
     }
 
     public function findAll(){
-        $vigilantes = Vigilante::join('usuarios', 'usuarios.correo', '=', 'Vigilantes.correo')
+        $vigilantes = Vigilante::join('usuarios', 'usuarios.correo', '=', 'vigilantes.correo')
         ->select('vigilantes.*')
         ->get();
         return response()->json($vigilantes, 200);

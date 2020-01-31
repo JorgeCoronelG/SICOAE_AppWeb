@@ -14,16 +14,7 @@
                     <th style="width: 15%; text-align:center;">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th style="text-align:center;">20191125LMF83901</th>
-                    <th style="text-align:center;">2016313027</th>
-                    <th style="text-align:center;">Pedro Huerta Martinez</th>
-                    <th style="width: 15%; text-align:center;">
-                        <button class="btn btn-outline-primary btn-circle"><i class="fa fa-check"></i></button>
-                    </th>
-                </tr>
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 </div>
