@@ -44,6 +44,7 @@ Route::post('/vigilante/delete', 'VigilanteController@delete')->name('vigilante.
 Route::get('/vigilante/count', 'VigilanteController@count')->name('vigilante.count');
 
 Route::get('/registro/day/assistance', 'RegistroController@dayAssistance')->name('registro.day.assistance');
+Route::get('/registro/all/{matricula}', 'RegistroController@findAllByStudent')->name('registro.all.student');
 
 Route::get('/referencia/all/input', 'ReferenciaController@inputDay')->name('referencia.all.input');
 Route::get('/referencia/input/{id}', 'ReferenciaController@inputReference')->name('referencia.input');
@@ -70,6 +71,7 @@ Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin/agregarGrupo', 'AdminViewController@agregarGrupo')->name('admin.agregar.grupo');
     Route::get('/admin/gestionarGrupos', 'AdminViewController@gestionarGrupos')->name('admin.gestionar.grupos');*/
     Route::get('/admin/registros/externos', 'AdminViewController@historicoExternos')->name('admin.registros.externos');
+    Route::get('admin/estadisticas/estudiante', 'AdminViewController@estadisticaEstudiante')->name('admin.estadistica.estudiante');
 });
 
 Route::middleware(['auth', 'vigilante'])->group(function(){

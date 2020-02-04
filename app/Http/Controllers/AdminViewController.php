@@ -54,4 +54,8 @@ class AdminViewController extends Controller
         return view('admin.externos.historico');
     }
 
+    public function estadisticaEstudiante(){
+        return view('admin.estadistica.estudiante');
+    }
+
 }

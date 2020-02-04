@@ -41,11 +41,11 @@ $('#tabla-estudiante').DataTable({
         {data: 'nombre_tutor'},
         {'orderable': true,
             render: function(data, type, row){
-                var output = '<button class="btn btn-outline-primary btn-circle" data-toggle="modal" data-target="#update-modal" onclick="actualizar(\''+row.matricula+'\',\''+row.tarjeta+'\',\''+row.nombre+'\',\''+row.grado+'\',\''+row.grupo+'\', \''+row.tutor+'\');"><i class="fas fa-edit"></i></button> ';
+                var output = '<button class="btn btn-outline-primary btn-circle" data-toggle="modal" data-target="#update-modal" onclick="actualizar(\''+row.matricula+'\',\''+row.tarjeta+'\',\''+row.nombre+'\',\''+row.grado+'\',\''+row.grupo+'\', \''+row.tutor+'\');"><i class="fa fa-edit"></i></button> ';
                 if(row.estatus == 1){
-                    output += '<button class="btn btn-outline-danger btn-circle" data-toggle="modal" data-target="#change-status-modal" onclick="cambiarEstatus(\''+row.matricula+'\',\''+row.nombre+'\', \'INACTIVO\');"><i class="fas fa-times"></i></button>';
+                    output += '<button class="btn btn-outline-danger btn-circle" data-toggle="modal" data-target="#change-status-modal" onclick="cambiarEstatus(\''+row.matricula+'\',\''+row.nombre+'\', \'INACTIVO\');"><i class="fa fa-times"></i></button>';
                 }else{
-                    output += '<button class="btn btn-outline-success btn-circle" data-toggle="modal" data-target="#change-status-modal" onclick="cambiarEstatus(\''+row.matricula+'\',\''+row.nombre+'\', \'ACTIVO\');"><i class="fas fa-check"></i></button>';
+                    output += '<button class="btn btn-outline-success btn-circle" data-toggle="modal" data-target="#change-status-modal" onclick="cambiarEstatus(\''+row.matricula+'\',\''+row.nombre+'\', \'ACTIVO\');"><i class="fa fa-check"></i></button>';
                 }
                 return output;
             }

@@ -122,7 +122,7 @@
         <div id="collapseEstadisticas" class="collapse" aria-labelledby="headingGrupo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Módulos</h6>
-            <a class="collapse-item" href="">Por estudiante</a>
+            <a class="collapse-item" href="{{ route('admin.estadistica.estudiante') }}">Por estudiante</a>
             <a class="collapse-item" href="">Por grupo</a>
             <a class="collapse-item" href="">Por grado</a>
           </div>

@@ -42,7 +42,7 @@ class ExternoController extends Controller
         $externos = Externo::all();
         $arrExternos = array();
         foreach($externos as $externo){
-            $externo->fecha = date('d/m/Y', strtotime($externo->hora_entrada));
+            $externo->fecha = date('d/m/Y', strtotime($externo->fecha));
             $externo->hora_entrada = date('h:i a', strtotime($externo->hora_entrada));
             if($externo->hora_salida != null)
                 $externo->hora_salida = date('h:i a', strtotime($externo->hora_salida));
@@ -55,7 +55,7 @@ class ExternoController extends Controller
         $externos = Externo::where('hora_salida', null)->get();
         $arrExternos = array();
         foreach($externos as $externo){
-            $externo->fecha = date('d/m/Y', strtotime($externo->hora_entrada));
+            $externo->fecha = date('d/m/Y', strtotime($externo->fecha));
             $externo->hora_entrada = date('h:i a', strtotime($externo->hora_entrada));
             if($externo->hora_salida != null)
                 $externo->hora_salida = date('h:i a', strtotime($externo->hora_salida));
