@@ -39,9 +39,13 @@ class RegistroController extends Controller
                     $registro->hora_salida = date('h:i a', strtotime($registro->hora_salida));
                 $arrRegistros[] = $registro;
             }
+            $asistencia = 100*count($registros)/$totalDias;
+            $inasistencia = 100-$asistencia;
             return response()->json([
                 'totalDias' => $totalDias,
                 'totalRegistros' => count($registros),
+                'asistencia' => $asistencia,
+                'inasistencia' => $inasistencia,
                 'estudiante' => $estudiante,
                 'registros' => $arrRegistros
             ]);

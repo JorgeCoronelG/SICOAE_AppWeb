@@ -54,6 +54,9 @@
                 <canvas id="grafica"></canvas>
             </div>
         </div>
+        <div class="card-footer">
+            <span id="porcentaje"></span>
+        </div>
     </div>
     </div>
 </div>

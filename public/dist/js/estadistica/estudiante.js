@@ -69,7 +69,7 @@ function estadistica(matricula){
             $('#estudiante').html(data.estudiante.nombre);
             $('#escolaridad').html(data.estudiante.grado+'° '+data.estudiante.grupo);
             tablaRegistros(data.registros);
-            cargarGrafico(data.totalRegistros, (data.totalDias - data.totalRegistros));
+            cargarGrafico(data.totalRegistros, (data.totalDias - data.totalRegistros), data.asistencia, data.inasistencia);
         },
         error: function(jqXHR){
             let errors = jqXHR.responseJSON.errors;
@@ -130,7 +130,7 @@ function tablaRegistros(registros){
     });
 }
 
-function cargarGrafico(asistencias, inasistencias){
+function cargarGrafico(asistencias, inasistencias, pA, pI){
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#858796';
@@ -166,4 +166,5 @@ function cargarGrafico(asistencias, inasistencias){
         cutoutPercentage: 80,
     },
     });
+    $('#porcentaje').html(pA+'% Asistencia, '+pI+'% Inasistencia');
 }
