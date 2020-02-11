@@ -45,6 +45,8 @@ Route::get('/vigilante/count', 'VigilanteController@count')->name('vigilante.cou
 
 Route::get('/registro/day/assistance', 'RegistroController@dayAssistance')->name('registro.day.assistance');
 Route::get('/registro/all/{matricula}', 'RegistroController@findAllByStudent')->name('registro.all.student');
+Route::get('/registro/group/all/{grupo}', 'RegistroController@findAllByGroup')->name('registro.all.group');
+Route::get('/registro/grade/all/{grado}', 'RegistroController@findAllByGrade')->name('registro.all.grade');
 
 Route::get('/referencia/all/input', 'ReferenciaController@inputDay')->name('referencia.all.input');
 Route::get('/referencia/input/{id}', 'ReferenciaController@inputReference')->name('referencia.input');

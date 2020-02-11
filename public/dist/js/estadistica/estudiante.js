@@ -69,7 +69,7 @@ function estadistica(matricula){
             $('#estudiante').html(data.estudiante.nombre);
             $('#escolaridad').html(data.estudiante.grado+'° '+data.estudiante.grupo);
             tablaRegistros(data.registros);
-            cargarGrafico(data.totalRegistros, (data.totalDias - data.totalRegistros), data.asistencia, data.inasistencia);
+            cargarGrafico(data.asistencia, data.inasistencia);
         },
         error: function(jqXHR){
             let errors = jqXHR.responseJSON.errors;
@@ -130,7 +130,7 @@ function tablaRegistros(registros){
     });
 }
 
-function cargarGrafico(asistencias, inasistencias, pA, pI){
+function cargarGrafico(asistencias, inasistencias){
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#858796';
@@ -143,7 +143,7 @@ function cargarGrafico(asistencias, inasistencias, pA, pI){
         labels: ["Asistencias", "Inasistencias"],
         datasets: [{
         data: [asistencias, inasistencias],//Datos a llenar
-        backgroundColor: ['#4e73df', '#FF0000'],
+        backgroundColor: ['#4e73df', '#e74a3b'],
         hoverBackgroundColor: ['#2e59d9', '#dd0000'],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
         }],
@@ -164,7 +164,6 @@ function cargarGrafico(asistencias, inasistencias, pA, pI){
         display: false
         },
         cutoutPercentage: 80,
-    },
+        },
     });
-    $('#porcentaje').html(pA+'% Asistencia, '+pI+'% Inasistencia');
 }

@@ -53,9 +53,14 @@
             <div class="chart-pie pt-4">
                 <canvas id="grafica"></canvas>
             </div>
-        </div>
-        <div class="card-footer">
-            <span id="porcentaje"></span>
+            <div class="mt-4 text-center small">
+                <span class="mr-2">
+                    <i class="fas fa-circle text-primary"></i> Asistencias
+                </span>
+                <span class="mr-2">
+                    <i class="fas fa-circle text-danger"></i> Inasistencias
+                </span>
+            </div>
         </div>
     </div>
     </div>

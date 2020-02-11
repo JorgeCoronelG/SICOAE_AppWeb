@@ -12,31 +12,133 @@ class RegistroSeeder extends Seeder
      */
     public function run()
     {
-        $fecha_actual = date('Y-m-d');
-        $hora_actual = date('G:i:s');
+        $fecha = date('Y-m-d', strtotime('2020-02-10'));
+        $hora_entrada = date('G:i:s', strtotime('08:00:00'));
+        $hora_salida = date('G:i:s', strtotime('12:30:00'));
+        //Estudiante 1
         Registro::create([
-            'fecha' => $fecha_actual,
-            'hora_entrada' => $hora_actual,
-            'hora_salida' => $hora_actual,
+            'fecha' => $fecha,
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
             'matricula' => '2020113001'
         ]);
         Registro::create([
-            'fecha' => date("Y-m-d",strtotime($fecha_actual."+ 1 days")),
-            'hora_entrada' => $hora_actual,
-            'hora_salida' => $hora_actual,
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 1 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
             'matricula' => '2020113001'
         ]);
         Registro::create([
-            'fecha' => date("Y-m-d",strtotime($fecha_actual."+ 2 days")),
-            'hora_entrada' => $hora_actual,
-            'hora_salida' => $hora_actual,
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 2 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
             'matricula' => '2020113001'
         ]);
         Registro::create([
-            'fecha' => date("Y-m-d",strtotime($fecha_actual."+ 3 days")),
-            'hora_entrada' => $hora_actual,
-            'hora_salida' => $hora_actual,
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 3 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
             'matricula' => '2020113001'
+        ]);
+        //Estudiante 2
+        Registro::create([
+            'fecha' => $fecha,
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113002'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 1 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113002'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 2 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113002'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 4 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113002'
+        ]);
+        //Estudiante 3
+        Registro::create([
+            'fecha' => $fecha,
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113003'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 1 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113003'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 2 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113003'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 3 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113003'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 4 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113003'
+        ]);
+        //Estudiante 4
+        Registro::create([
+            'fecha' => $fecha,
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113004'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 1 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113004'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 3 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113004'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 4 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113004'
+        ]);
+        //Estudiante 5
+        Registro::create([
+            'fecha' => $fecha,
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113005'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 1 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113005'
+        ]);
+        Registro::create([
+            'fecha' => date("Y-m-d",strtotime($fecha."+ 2 days")),
+            'hora_entrada' => $hora_entrada,
+            'hora_salida' => $hora_salida,
+            'matricula' => '2020113005'
         ]);
     }
 }

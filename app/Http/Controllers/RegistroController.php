@@ -31,7 +31,7 @@ class RegistroController extends Controller
         if($estudiante != null){
             $totalDias = 5;
             $arrRegistros = array();
-            $registros = Registro::where('registros.matricula', $matricula)->get();
+            $registros = Registro::where('matricula', $matricula)->get();
             foreach($registros as $registro){
                 $registro->fecha = date('d/m/Y', strtotime($registro->fecha));
                 $registro->hora_entrada = date('h:i a', strtotime($registro->hora_entrada));
@@ -39,18 +39,48 @@ class RegistroController extends Controller
                     $registro->hora_salida = date('h:i a', strtotime($registro->hora_salida));
                 $arrRegistros[] = $registro;
             }
-            $asistencia = 100*count($registros)/$totalDias;
-            $inasistencia = 100-$asistencia;
             return response()->json([
-                'totalDias' => $totalDias,
-                'totalRegistros' => count($registros),
-                'asistencia' => $asistencia,
-                'inasistencia' => $inasistencia,
+                'asistencia' => count($registros),
+                'inasistencia' => $totalDias - count($registros),
                 'estudiante' => $estudiante,
                 'registros' => $arrRegistros
             ]);
         }else{
             return response()->json(['errors' => ['estudiante' => ['Estudiante no encontrado']]]);
+        }
+    }
+
+    public function findAllByGroup($grupo){
+        $estudiantes = Estudiante::where('grupo', $grupo)->count();
+        $registros = Registro::join('estudiantes', 'estudiantes.matricula', '=', 'registros.matricula')
+        ->where('estudiantes.grupo', $grupo)
+        ->count();
+        if($registros != null | $estudiantes != null){
+            $totalDias = 5 * $estudiantes;
+            $asistencias = $registros;
+            return response()->json([
+                'asistencia' => $asistencias,
+                'inasistencia' => $totalDias - $asistencias
+            ]);
+        }else{
+            return response()->json(['errors' => ['grupo' => ['Grupo no encontrado']]]);
+        }
+    }
+
+    public function findAllByGrade($grado){
+        $estudiantes = Estudiante::where('grado', $grado)->count();
+        $registros = Registro::join('estudiantes', 'estudiantes.matricula', '=', 'registros.matricula')
+        ->where('estudiantes.grado', $grado)
+        ->count();
+        if($registros != null | $estudiantes != null){
+            $totalDias = 5 * $estudiantes;
+            $asistencias = $registros;
+            return response()->json([
+                'asistencia' => $asistencias,
+                'inasistencia' => $totalDias - $asistencias
+            ]);
+        }else{
+            return response()->json(['errors' => ['grupo' => ['Grupo no encontrado']]]);
         }
     }
 
