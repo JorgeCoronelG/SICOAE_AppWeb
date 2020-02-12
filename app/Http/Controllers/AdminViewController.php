@@ -58,4 +58,12 @@ class AdminViewController extends Controller
         return view('admin.estadistica.estudiante');
     }
 
+    public function estadisticaGrupo(){
+        return view('admin.estadistica.grupo');
+    }
+
+    public function estadisticaGrado(){
+        return view('admin.estadistica.grado');
+    }
+
 }

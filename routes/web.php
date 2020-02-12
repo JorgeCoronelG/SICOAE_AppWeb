@@ -74,6 +74,8 @@ Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin/gestionarGrupos', 'AdminViewController@gestionarGrupos')->name('admin.gestionar.grupos');*/
     Route::get('/admin/registros/externos', 'AdminViewController@historicoExternos')->name('admin.registros.externos');
     Route::get('admin/estadisticas/estudiante', 'AdminViewController@estadisticaEstudiante')->name('admin.estadistica.estudiante');
+    Route::get('admin/estadisticas/grupo', 'AdminViewController@estadisticaGrupo')->name('admin.estadistica.grupo');
+    Route::get('admin/estadisticas/grado', 'AdminViewController@estadisticaGrado')->name('admin.estadistica.grado');
 });
 
 Route::middleware(['auth', 'vigilante'])->group(function(){

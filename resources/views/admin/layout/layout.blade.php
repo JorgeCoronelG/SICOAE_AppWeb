@@ -123,8 +123,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Módulos</h6>
             <a class="collapse-item" href="{{ route('admin.estadistica.estudiante') }}">Por estudiante</a>
-            <a class="collapse-item" href="">Por grupo</a>
-            <a class="collapse-item" href="">Por grado</a>
+            <a class="collapse-item" href="{{ route('admin.estadistica.grupo') }}">Por grupo</a>
+            <a class="collapse-item" href="{{ route('admin.estadistica.grado') }}">Por grado</a>
           </div>
         </div>
       </li>
