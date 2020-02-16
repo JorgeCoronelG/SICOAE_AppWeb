@@ -49,7 +49,9 @@ Route::get('/registro/group/all/{grupo}', 'RegistroController@findAllByGroup')->
 Route::get('/registro/grade/all/{grado}', 'RegistroController@findAllByGrade')->name('registro.all.grade');
 
 Route::get('/referencia/all/input', 'ReferenciaController@inputDay')->name('referencia.all.input');
+Route::get('/referencia/all/output', 'ReferenciaController@outputDay')->name('referencia.all.output');
 Route::get('/referencia/input/{id}', 'ReferenciaController@inputReference')->name('referencia.input');
+Route::get('/referencia/output/{id}', 'ReferenciaController@outputReference')->name('referencia.output');
 
 Route::post('/externo/input', 'ExternoController@input')->name('externo.input');
 Route::get('/externo/all', 'ExternoController@findAll')->name('externo.all');

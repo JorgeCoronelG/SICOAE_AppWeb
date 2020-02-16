@@ -48,7 +48,7 @@ class EstudianteSeeder extends Seeder
             'grupo' => 'A',
             'tutor' => 2
         ]);
-        Estudiante::create([
+        $estudiante = Estudiante::create([
             'matricula' => '2020113005',
             'tarjeta' => 'ABC005',
             'nombre' => 'Estudiante 5',
@@ -56,6 +56,12 @@ class EstudianteSeeder extends Seeder
             'grado' => 3,
             'grupo' => 'C',
             'tutor' => 3
+        ]);
+        $estudiante->getReferencia()->create([
+            'id' => '20200215LKSM',
+            'fecha' => '2020-02-15',
+            'persona' => 'Persona 1',
+            'estatus' => 1,
         ]);
     }
 }
