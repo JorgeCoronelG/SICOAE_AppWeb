@@ -18,7 +18,7 @@ class Usuario extends Authenticatable
     use Notifiable;
 
     protected $fillable = ['correo', 'clave', 'tipo_usuario', 'estatus'];
-    protected $hidden = ['clave'];
+    //protected $hidden = ['clave'];
 
     public function getTutor(){
         return $this->hasOne('App\Tutor', 'correo', 'correo');

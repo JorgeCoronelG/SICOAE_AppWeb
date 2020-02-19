@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/usuario/login', 'webservices\UsuarioController@login');
+
+Route::post('/token/add', 'webservices\TokenController@insert');
