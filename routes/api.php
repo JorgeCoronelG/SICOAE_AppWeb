@@ -18,5 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/usuario/login', 'webservices\UsuarioController@login');
-
-Route::post('/token/add', 'webservices\TokenController@insert');
+Route::get('/usuario/forgot/password/{correo}', 'webservices\UsuarioController@forgotPassword');

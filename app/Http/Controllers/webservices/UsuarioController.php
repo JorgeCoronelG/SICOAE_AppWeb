@@ -39,4 +39,24 @@ class UsuarioController extends Controller
         }
     }
 
+    public function forgotPassword($correo){
+        $usuario = Usuario::find($correo);
+        if($usuario != null){
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $clave = '';
+            for ($i = 0; $i < 10; $i++) {
+                $clave .= $characters[rand(0, strlen($characters) - 1)];
+            }
+            $usuario->clave = bcrypt($clave);
+            $usuario->save();
+            //Falta enviarle un correo con la nueva contraseña
+            return response()->json(['code' => 200], 200);
+        }else{
+            return response()->json([
+                'error' => 'Correo no encontrado',
+                'code' => 404
+            ], 200);
+        }
+    }
+
 }
