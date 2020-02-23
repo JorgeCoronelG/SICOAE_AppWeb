@@ -17,7 +17,7 @@ class UsuarioController extends Controller
                 if(Hash::check($request->clave, $usuario->clave)){
                     return response()->json([
                         'id' => $usuario->getTutor->id,
-                        'code' => 2
+                        'code' => 1
                     ], 200);
                 }else{
                     return response()->json([
@@ -39,7 +39,7 @@ class UsuarioController extends Controller
         }
     }
 
-    public function forgotPassword($correo){
+    public function resetPassword($correo){
         $usuario = Usuario::find($correo);
         if($usuario != null){
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
