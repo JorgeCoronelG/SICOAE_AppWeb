@@ -30,6 +30,9 @@ class TutorController extends Controller
                 'telefono' => $request->telefono
                 //'correo' => $usuario->correo
             ]);
+            $tutor->getToken()->create([
+                'token' => ''
+            ]);
             return response()->json('OK', 200);
         }else{
             return response()->json(['errors' => ['duplicate-correo' => ['Correo ya registrado']]], 422);

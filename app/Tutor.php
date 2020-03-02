@@ -18,4 +18,8 @@ class Tutor extends Model
     public function getEstudiante(){
         return $this->hasMany('App\Estudiante', 'tutor', 'id');
     }
+
+    public function getToken(){
+        return $this->hasOne('App\Token', 'tutor', 'id');
+    }
 }
