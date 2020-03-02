@@ -65,7 +65,28 @@ class UsuarioController extends Controller
         }else{
             return response()->json([
                 'code' => 404,
-                'error' => 'Correo no registrado'
+                'error' => 'Usuario no registrado'
+            ], 200);
+        }
+    }
+
+    public function changePassword(Request $request){
+        $usuario = Usuario::find($request->correo);
+        if($usuario != null){
+            if(Hash::check($request->oldClave, $usuario->clave)){
+                $usuario->clave = bcrypt($request->newClave);
+                $usuario->save();
+                return response()->json(['code' => 6], 200);
+            }else{
+                return response()->json([
+                    'error' => 'Contraseña incorrecta',
+                    'code' => 404
+                ], 200);
+            }
+        }else{
+            return response()->json([
+                'code' => 404,
+                'error' => 'Usuario no registrado'
             ], 200);
         }
     }

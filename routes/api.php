@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/usuario/login', 'webservices\UsuarioController@login');
 Route::get('/usuario/reset/password/{correo}', 'webservices\UsuarioController@resetPassword');
+Route::post('/usuario/change/password', 'webservices\UsuarioController@changePassword');
 
 Route::post('/token/update', 'webservices\TokenController@update');
 Route::get('/token/delete/{id}', 'webservices\TokenController@delete');
+
+Route::get('/tutor/get/{id}', 'webservices\TutorController@get');
