@@ -12,7 +12,7 @@ class RegistroSeeder extends Seeder
      */
     public function run()
     {
-        $fecha = date('Y-m-d', strtotime('2020-02-10'));
+        $fecha = date('Y-m-d', strtotime('2020-03-02'));
         $hora_entrada = date('G:i:s', strtotime('08:00:00'));
         $hora_salida = date('G:i:s', strtotime('12:30:00'));
         //Estudiante 1

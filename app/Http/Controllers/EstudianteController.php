@@ -40,7 +40,7 @@ class EstudianteController extends Controller
         }
     }
 
-    public function edit(EstudianteRequest $request){
+    public function edit(Request $request){
         $tutor = Tutor::find($request->tutor);
         if($tutor != null){
             $estudiante_old = Estudiante::find($request->oldmatricula);
