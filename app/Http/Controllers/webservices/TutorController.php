@@ -27,7 +27,7 @@ class TutorController extends Controller
                 $est['grupo'] = $estudiante->grupo;
                 $data['estudiantes'][] = $est;
             }
-            return response()->json($data);
+            return response()->json($data, 200);
         }else{
             return response()->json([
                 'error' => 'Tutor no encontrado',
