@@ -11,8 +11,8 @@ use App\Estudiante;
 class RegistroController extends Controller
 {
     
-    public function findAll(Request $request){
-        $tutor = Tutor::find($request->id);
+    public function findAll($id, $fecha){
+        $tutor = Tutor::find($id);
         if($tutor != null){
             $data = array();
             foreach($tutor->getEstudiante as $estudiante){
@@ -20,7 +20,7 @@ class RegistroController extends Controller
                 $arr['matricula'] = $estudiante->matricula;
                 $arr['nombre'] = $estudiante->nombre;
                 $registro = Registro::where('matricula', $estudiante->matricula)
-                ->where('fecha', date('Y-m-d', strtotime($request->fecha)))->first();
+                ->where('fecha', date('Y-m-d', strtotime($fecha)))->first();
                 if($registro != null){
                     $arr['registro'] = $registro->id;
                     $arr['fecha'] = $registro->fecha;

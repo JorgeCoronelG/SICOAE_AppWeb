@@ -35,13 +35,13 @@ class UsuarioSeeder extends Seeder
 
         $usuario = Usuario::create([
             'correo' => 'tutor_2@gmail.com',
-            'clave' => bcrypt('password'),
+            'clave' => bcrypt('4422334455'),
             'tipo_usuario' => 3,
             'estatus' => 1
         ]);
         $tutor = $usuario->getTutor()->create([
-            'nombre' => 'Tutor 2',
-            'telefono' => '4421223344'
+            'nombre' => 'Fabiola González García',
+            'telefono' => '4422334455'
         ]);
         $tutor->getToken()->create([
             'token' => ''
@@ -49,13 +49,13 @@ class UsuarioSeeder extends Seeder
 
         $usuario = Usuario::create([
             'correo' => 'tutor_3@gmail.com',
-            'clave' => bcrypt('password'),
+            'clave' => bcrypt('4422334455'),
             'tipo_usuario' => 3,
             'estatus' => 1
         ]);
         $tutor = $usuario->getTutor()->create([
-            'nombre' => 'Tutor 3',
-            'telefono' => '4421223344'
+            'nombre' => 'Luis Enrique Álvarez Mendoza',
+            'telefono' => '4422334455'
         ]);
         $tutor->getToken()->create([
             'token' => ''
@@ -63,35 +63,35 @@ class UsuarioSeeder extends Seeder
 
         $usuario = Usuario::create([
             'correo' => 'vigilante_1@gmail.com',
-            'clave' => bcrypt('password'),
+            'clave' => bcrypt('4422334455'),
             'tipo_usuario' => 2,
             'estatus' => 1
         ]);
         $usuario->getVigilante()->create([
-            'nombre' => 'Vigilante 1',
-            'telefono' => '4421223344'
+            'nombre' => 'Eduardo Hernández Olvera',
+            'telefono' => '4422334455'
         ]);
 
         $usuario = Usuario::create([
             'correo' => 'vigilante_2@gmail.com',
-            'clave' => bcrypt('password'),
+            'clave' => bcrypt('4422334455'),
             'tipo_usuario' => 2,
             'estatus' => 1
         ]);
         $usuario->getVigilante()->create([
-            'nombre' => 'Vigilante 2',
-            'telefono' => '4421223344'
+            'nombre' => 'Iván Girón Hernández',
+            'telefono' => '4422334455'
         ]);
 
         $usuario = Usuario::create([
             'correo' => 'vigilante_3@gmail.com',
-            'clave' => bcrypt('password'),
+            'clave' => bcrypt('4422334455'),
             'tipo_usuario' => 2,
             'estatus' => 1
         ]);
         $usuario->getVigilante()->create([
-            'nombre' => 'Vigilante 3',
-            'telefono' => '4421223344'
+            'nombre' => 'Jorge Ramírez Rosas',
+            'telefono' => '4422334455'
         ]);
     }
 }

@@ -14,7 +14,7 @@ class CreateReferenciasTable extends Migration
     public function up()
     {
         Schema::create('referencias', function (Blueprint $table) {
-            $table->string('id', 12);
+            $table->string('id', 15);
             $table->primary('id');
             $table->date('fecha');
             $table->string('persona', 150);

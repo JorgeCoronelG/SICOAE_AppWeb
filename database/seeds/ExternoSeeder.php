@@ -13,7 +13,7 @@ class ExternoSeeder extends Seeder
     public function run()
     {
         Externo::create([
-            'nombre' => 'Externo 1',
+            'nombre' => 'Juan De Dios Pantoja',
             'telefono' => '4422334455',
             'fecha' => date('Y/m/d'),
             'motivo' => 'Motivo 1',
@@ -22,7 +22,7 @@ class ExternoSeeder extends Seeder
             'hora_salida' => null
         ]);
         Externo::create([
-            'nombre' => 'Externo 2',
+            'nombre' => 'Íker Aguilar Pérez',
             'telefono' => '4422334455',
             'fecha' => date('Y/m/d'),
             'motivo' => 'Motivo 2',
@@ -31,7 +31,7 @@ class ExternoSeeder extends Seeder
             'hora_salida' => null
         ]);
         Externo::create([
-            'nombre' => 'Externo 3',
+            'nombre' => 'Ignacio Pérez Rico',
             'telefono' => '4422334455',
             'fecha' => date('Y/m/d'),
             'motivo' => 'Motivo 3',
