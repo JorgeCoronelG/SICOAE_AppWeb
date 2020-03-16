@@ -48,10 +48,10 @@ class ReferenciaController extends Controller
         if($tutor != null){
             $data = array();
             foreach($tutor->getEstudiante as $estudiante){
-                $ref = array();
                 $referencia = Referencia::where('matricula', $estudiante->matricula)->where('fecha', date('Y-m-d'))->first();
                 if($referencia != null){
                     if($referencia->estatus != 2){
+                        $ref = array();
                         $ref['matricula'] = $estudiante->matricula;
                         $ref['nombre'] = $estudiante->nombre;
                         $ref['referencia'] = $referencia->id;
@@ -63,7 +63,7 @@ class ReferenciaController extends Controller
                 }
             }
             if(!isset($data['referencias'])){
-                $data['referencias'][] = [];
+                $data['referencias'] = [null];
             }
             $data['code'] = 9;
             return response()->json($data, 200);

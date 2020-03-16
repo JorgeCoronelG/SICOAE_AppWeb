@@ -16,7 +16,7 @@ class CreateRegistrosTable extends Migration
         Schema::create('registros', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
-            $table->time('hora_entrada');
+            $table->time('hora_entrada')->nullable();
             $table->time('hora_salida')->nullable();
             $table->string('matricula', 15);
         });

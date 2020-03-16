@@ -27,6 +27,8 @@ Route::get('/token/delete/{id}', 'webservices\TokenController@delete');
 Route::get('/tutor/get/{id}', 'webservices\TutorController@get');
 
 Route::get('/registro/find/all/{id}/{fecha}', 'webservices\RegistroController@findAll');
+Route::post('/registro/input', 'webservices\RegistroController@input');
+Route::post('/registro/output', 'webservices\RegistroController@output');
 
 Route::post('/referencia/create', 'webservices\ReferenciaController@create');
 Route::get('/referencia/find/all/{id}', 'webservices\ReferenciaController@findAll');
