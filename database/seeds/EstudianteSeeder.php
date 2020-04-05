@@ -14,7 +14,7 @@ class EstudianteSeeder extends Seeder
     {
         Estudiante::create([
             'matricula' => '2020113001',
-            'tarjeta' => 'ABC001',
+            'tarjeta' => '9E0E3AD5',
             'nombre' => 'Alexa Coronel Salinas',
             'estatus' => 1,
             'grado' => 1,
@@ -23,7 +23,7 @@ class EstudianteSeeder extends Seeder
         ]);
         Estudiante::create([
             'matricula' => '2020113002',
-            'tarjeta' => 'ABC002',
+            'tarjeta' => 'D9308C98',
             'nombre' => 'David Coronel Salinas',
             'estatus' => 1,
             'grado' => 2,
@@ -57,11 +57,11 @@ class EstudianteSeeder extends Seeder
             'grupo' => 'C',
             'tutor' => 3
         ]);
-        $estudiante->getReferencia()->create([
+        /*$estudiante->getReferencia()->create([
             'id' => '20200215LKSM',
             'fecha' => '2020-03-12',
             'persona' => 'Pedro Escobar Martínez',
             'estatus' => 1,
-        ]);
+        ]);*/
     }
 }

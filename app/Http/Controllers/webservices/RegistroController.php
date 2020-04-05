@@ -11,6 +11,114 @@ use App\Estudiante;
 class RegistroController extends Controller
 {
 
+    const SATURDAY = "Saturday";
+    const SUNDAY = "Sunday";
+    const TIME_INPUT = "08:00:00";
+    const TIME_OUTPUT = "14:00:00";
+    const OPEN_DOOR = 180;
+    const EXIT_DOOR = 0;
+    const ERROR_DOOR = 404;
+
+    public function register(Request $request){
+        if(date('l') != self::SATURDAY && date('l') != self::SUNDAY){
+            $time = date('H:i:s');
+            if($time >= date('H:i:s', strtotime(self::TIME_INPUT.'-15 minute')) && 
+                $time <= date('H:i:s', strtotime(self::TIME_INPUT.'+15 minute'))){
+                //Cumple con el horario de entrada
+                $estudiante = Estudiante::where([
+                    'tarjeta' => $request->tarjeta, 
+                    'estatus' => 1
+                    ])->first();
+                if($estudiante != null){
+                    //El estudiante existe y está activo
+                    $registro = Registro::where([
+                        'matricula' => $estudiante->matricula,
+                        'fecha' => date('Y/m/d')
+                    ])->first();
+                    if($registro == null){
+                        //No hay registro de entrada, por lo cual, se añade a la bd
+                        $registro = $estudiante->getRegistro()->create([
+                            'fecha' => date('Y/m/d'),
+                            'hora_entrada' => date('G:i:s'),
+                            'hora_salida' => null
+                        ]);
+                        if($registro != null){
+                            //Se ha ingreado con éxito a la bd
+                            if($estudiante->getTutor->getToken->token != ''){
+                                $to = $estudiante->getTutor->getToken->token;
+                                $data = array(
+                                    'title' => $estudiante->nombre,
+                                    'body' => 'Entró a la institución'
+                                );
+                                $notification = new Notification();
+                                $notification->sendPush($to, $data);
+                                //print_r($notification->sendPush($to, $data));
+                                $this->openDoor(self::OPEN_DOOR);
+                            }else{
+                                $this->openDoor(self::OPEN_DOOR);
+                            }
+                        }else{
+                            $this->openDoor(self::ERROR_DOOR);
+                        }
+                    }else{
+                        $this->openDoor(self::ERROR_DOOR);
+                    }
+                }else{
+                    $this->openDoor(self::ERROR_DOOR);
+                }
+            }else if($time >= date('H:i:s', strtotime(self::TIME_OUTPUT.'-15 minute')) && 
+                $time <= date('H:i:s', strtotime(self::TIME_OUTPUT.'+15 minute'))){
+                //Cumple con el horario de salida
+                $estudiante = Estudiante::where([
+                    'tarjeta' => $request->tarjeta, 
+                    'estatus' => 1
+                    ])->first();
+                if($estudiante != null){
+                    //El estudiante existe y está activo
+                    $registro = Registro::where([
+                        'matricula' => $estudiante->matricula,
+                        'fecha' => date('Y/m/d')
+                    ])->first();
+                    if($registro != null){
+                        //Ya hay registro, sigifica que el alumno desea salir
+                        if($registro->hora_salida == null){
+                            //No hay registro de salida, sería su primer intento de salida
+                            $registro->hora_salida = date('G:i:s');
+                            if($registro->save()){
+                                //Se ha actualizado con éxito a la bd
+                                if($estudiante->getTutor->getToken->token != ''){
+                                    $to = $estudiante->getTutor->getToken->token;
+                                    $data = array(
+                                        'title' => $estudiante->nombre,
+                                        'body' => 'Salió de la institución'
+                                    );
+                                    $notification = new Notification();
+                                    $notification->sendPush($to, $data);
+                                    //print_r($notification->sendPush($to, $data));
+                                    $this->openDoor(self::EXIT_DOOR);
+                                }else{
+                                    $this->openDoor(self::EXIT_DOOR);
+                                }
+                            }else{
+                                $this->openDoor(self::ERROR_DOOR);
+                            }
+                        }else{
+                            $this->openDoor(self::ERROR_DOOR);
+                        }
+                    }else{
+                        $this->openDoor(self::ERROR_DOOR);
+                    }
+                }else{
+                    $this->openDoor(self::ERROR_DOOR);
+                }
+            }else{
+                $this->openDoor(self::ERROR_DOOR);
+            }
+        }else{
+            $this->openDoor(self::ERROR_DOOR);
+        }
+    }
+
     public function input(Request $request){
         $estudiante = Estudiante::where([
             'tarjeta' => $request->tarjeta, 
@@ -127,6 +235,17 @@ class RegistroController extends Controller
                 'code' => 404
             ], 200);
         }
+    }
+
+    public function openDoor($value){
+        $opciones = array('http' =>
+            array(
+                'method'  => 'GET',
+                'header'  => 'Content-type: application/x-www-form-urlencoded'
+            )
+        );
+        $contexto = stream_context_create($opciones);
+        $resultado = file_get_contents('http://192.168.16.114/?value='.$value, false, $contexto);
     }
 
 }

@@ -10,34 +10,44 @@ use App\Tutor;
 
 class ReferenciaController extends Controller
 {
+
+    const SATURDAY = "Saturday";
+    const SUNDAY = "Sunday";
     
     public function create(Request $request){
-        $estudiante = Estudiante::find($request->matricula);
-        if($estudiante != null){
-            if(Referencia::where('matricula', $estudiante->matricula)->where('fecha', date('Y-m-d'))->first() == null){
-                do{
-                    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                    $referencia = date('Ymd');
-                    for ($i = 0; $i < 7; $i++) {
-                        $referencia .= $characters[rand(0, strlen($characters) - 1)];
-                    }
-                }while(Referencia::find($referencia) != null);
-                $estudiante->getReferencia()->create([
-                    'id' => $referencia,
-                    'fecha' => date('Y-m-d'),
-                    'persona' => $request->persona,
-                    'estatus' => 0,
-                ]);
-                return response()->json(['referencia' => $referencia, 'code' => 8], 200);
+        if(date('l') != self::SATURDAY && date('l') != self::SUNDAY){
+            $estudiante = Estudiante::find($request->matricula);
+            if($estudiante != null){
+                if(Referencia::where('matricula', $estudiante->matricula)->where('fecha', date('Y-m-d'))->first() == null){
+                    do{
+                        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        $referencia = date('Ymd');
+                        for ($i = 0; $i < 7; $i++) {
+                            $referencia .= $characters[rand(0, strlen($characters) - 1)];
+                        }
+                    }while(Referencia::find($referencia) != null);
+                    $estudiante->getReferencia()->create([
+                        'id' => $referencia,
+                        'fecha' => date('Y-m-d'),
+                        'persona' => $request->persona,
+                        'estatus' => 0,
+                    ]);
+                    return response()->json(['referencia' => $referencia, 'code' => 8], 200);
+                }else{
+                    return response()->json([
+                        'error' => 'Solo se puede generar una referencia del estudiante por día',
+                        'code' => 404
+                    ], 200);
+                }
             }else{
                 return response()->json([
-                    'error' => 'Solo se puede generar una referencia del estudiante por día',
+                    'error' => 'Estudiante no encontrado',
                     'code' => 404
                 ], 200);
             }
         }else{
             return response()->json([
-                'error' => 'Estudiante no encontrado',
+                'error' => 'La referencia no puede ser generada en fines de semana',
                 'code' => 404
             ], 200);
         }

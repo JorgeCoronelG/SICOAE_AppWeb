@@ -8,6 +8,10 @@ use App\Externo;
 class ExternoController extends Controller
 {
 
+    const OPEN_DOOR = 180;
+    const EXIT_DOOR = 0;
+    const ERROR_DOOR = 404;
+
     public function input(Request $request){
         $request->validate([
             'nombre' => 'required|string|max:120',
@@ -24,6 +28,7 @@ class ExternoController extends Controller
             'hora_entrada' => date('G:i:s'),
             'hora_salida' => null
         ]);
+        $this->openDoor(self::OPEN_DOOR);
         return response()->json('OK', 200);
     }
 
@@ -32,8 +37,10 @@ class ExternoController extends Controller
         if($externo != null){
             $externo->hora_salida = date('G:i:s');
             $externo->save();
+            $this->openDoor(self::EXIT_DOOR);
             return response()->json('OK', 200);
         }else{
+            $this->openDoor(self::ERROR_DOOR);
             return response()->json(['errors' => ['externo' => ['No se encontraron registros']]]);
         }
     }
@@ -62,6 +69,17 @@ class ExternoController extends Controller
             $arrExternos[] = $externo;
         }
         return response()->json($arrExternos);
+    }
+
+    public function openDoor($value){
+        $opciones = array('http' =>
+            array(
+                'method'  => 'GET',
+                'header'  => 'Content-type: application/x-www-form-urlencoded'
+            )
+        );
+        $contexto = stream_context_create($opciones);
+        $resultado = file_get_contents('http://192.168.16.114/?value='.$value, false, $contexto);
     }
 
 }
