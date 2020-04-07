@@ -58,10 +58,6 @@ Route::get('/externo/all', 'ExternoController@findAll')->name('externo.all');
 Route::get('/externo/all/output', 'ExternoController@findAllWithoutOutput')->name('externo.all.output');
 Route::get('/externo/output/{id}', 'ExternoController@output')->name('externo.output');
 
-Route::get('/hora', function(){
-    return 'Fecha: '.date('Y/m/d').', Hora:'.date('G:i:s');
-});
-
 Route::middleware(['auth', 'administrador'])->group(function(){
     Route::get('/admin', 'AdminViewController@index')->name('admin.index');
     Route::get('/admin/agregar/tutor','AdminViewController@agregarTutor')->name('admin.agregar.tutor');

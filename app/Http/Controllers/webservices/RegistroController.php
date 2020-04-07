@@ -119,7 +119,7 @@ class RegistroController extends Controller
         }
     }
 
-    public function input(Request $request){
+    /*public function input(Request $request){
         $estudiante = Estudiante::where([
             'tarjeta' => $request->tarjeta, 
             'estatus' => 1
@@ -159,9 +159,9 @@ class RegistroController extends Controller
         }else{
             return response()->json(['error' => 'No se encuentra el estudiante'], 200);
         }
-    }
+    }*/
 
-    public function output(Request $request){
+    /*public function output(Request $request){
         $estudiante = Estudiante::where([
             'tarjeta' => $request->tarjeta, 
             'estatus' => 1
@@ -202,7 +202,7 @@ class RegistroController extends Controller
         }else{
             return response()->json(['error' => 'No se encuentra el estudiante'], 200);
         }
-    }
+    }*/
     
     public function findAll($id, $fecha){
         $tutor = Tutor::find($id);
@@ -272,13 +272,13 @@ class Notification{
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
 
-        echo json_encode($fields);
-        echo "<br><br>RESPUESTA FCM: ";
+        //echo json_encode($fields);
+        //echo "<br><br>RESPUESTA FCM: ";
 
         $result = curl_exec($ch);
         curl_close($ch);
 
-        return json_decode($result, true);
+        //return json_decode($result, true);
     }
 
 }
